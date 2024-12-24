@@ -1,0 +1,999 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>追番列表 | 轻语のblog</title><meta name="author" content="轻语,961064865@qq.com"><meta name="copyright" content="轻语"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="生命不息，追番不止！         .bangumi-tabs{margin-bottom:15px;margin-top:15px}.bangumi-tab{padding:5px}a.bangumi-tab{text-decoration:none}.bangumi-active{background:#657b83;color:#fff}.bangumi-item{positi">
+<meta property="og:type" content="website">
+<meta property="og:title" content="追番列表">
+<meta property="og:url" content="http://example.com/bangumis/index.html">
+<meta property="og:site_name" content="轻语のblog">
+<meta property="og:description" content="生命不息，追番不止！         .bangumi-tabs{margin-bottom:15px;margin-top:15px}.bangumi-tab{padding:5px}a.bangumi-tab{text-decoration:none}.bangumi-active{background:#657b83;color:#fff}.bangumi-item{positi">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/butterfly-icon.png">
+<meta property="article:author" content="轻语">
+<meta property="article:tag" content="轻语,轻语的博客,博客,轻语博客,轻语,Blog,qingyu,轻语&#96;Blog,hexo,QINGYU, HEXO QINGYU,Blog,qingyu&#96;Blog,💖,轻,轻语,In轻语,Go轻语,qingyu">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/butterfly-icon.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/bangumis/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '追番列表',
+  isPost: false,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  isShuoshuo: false
+}</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="轻语のblog" type="application/atom+xml">
+</head><body><div id="web_bg" style="background-image: url(url(https://www.helloimg.com/i/2024/12/24/676a7c2b27a75.jpg));"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/butterfly-icon.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">2</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/bangumis/index.html"><i class="fa-fw fas fa-video"></i><span> 追番</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-home-page" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">轻语のblog</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/bangumis/index.html"><i class="fa-fw fas fa-video"></i><span> 追番</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="page-site-info"><h1 id="site-title">追番列表</h1></div></header><main class="layout" id="content-inner"><div id="page"><div class="container" id="article-container">
+<blockquote>
+    <p>生命不息，追番不止！</p>
+</blockquote>
+
+
+<style>
+    .bangumi-tabs{margin-bottom:15px;margin-top:15px}.bangumi-tab{padding:5px}a.bangumi-tab{text-decoration:none}.bangumi-active{background:#657b83;color:#fff}.bangumi-item{position:relative;clear:both;padding:10px 0;border-bottom:1px solid #ddd;min-height:180px}@media screen and (max-width:600px){.bangumi-item{width:100%}}.bangumi-picture{position:absolute;left:0;top:10px;width:110px}.bangumi-picture img{margin:10px 0}.bangumi-info{padding-left:120px;margin-top:10px;min-height:160px}.bangumi-meta{font-size:12px;padding-right:10px;height:45px}.bangumi-summary{font-size:12px;margin-top:10px}.bangumi-summary>p{word-break:break-all;text-overflow:ellipsis;overflow:hidden;white-space:normal;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3}.bangumi-comments{font-size:12px}.bangumi-pagination{margin-top:15px;text-align:center;margin-bottom:10px}.bangumi-button{padding:5px}.bangumi-button:hover{background:#657b83;color:#fff}.bangumi-hide{display:none}.bangumi-show{display:block}.bangumi-title{font-size:18px;font-weight:700}.bangumi-title a{line-height:1;text-decoration:none}.bangumi-info-items{font-size:12px;color:#2fd8d8;padding-top:10px;line-height:1;float:left;width:100%}.bangumi-info-item{display:inline-block;width:13%;border-right:1px solid #2fd8d8;text-align:center;height:34px}.bangumi-info-label{display:block;line-height:12px}.bangumi-info-item em{display:block;padding-top:6px;line-height:17px;font-style:normal;font-weight:700}.bangumi-info-total{padding-top:11px;display:block;line-height:12px;font-weight:700}.bangumi-info-item-score{border-right:1px solid #0000;width:50px}.bangumi-info-label-em{color:transparent;opacity:0;visibility:hidden;line-height:6px!important;padding:0!important}@media (max-width:650px){.bangumi-coin,.bangumi-type{display:none}.bangumi-info-item{width:16%}}@media (max-width:590px){.bangumi-danmaku,.bangumi-wish{display:none}.bangumi-info-item{width:19%}}@media (max-width:520px){.bangumi-doing,.bangumi-play{display:none}.bangumi-info-item{width:24%}}@media (max-width:480px){.bangumi-collect,.bangumi-follow{display:none}.bangumi-info-item{width:30%}}@media (max-width:400px){.bangumi-area{display:none}.bangumi-info-item{width:45%}}.bangumi-my-comments{border:1px dashed #8f8f8f;padding:3px;border-radius:5px}.bangumi-starstop{background:url(https://cdn.jsdelivr.net/npm/hexo-bilibili-bangumi@1.7.9/lib/img/rate_star_2x.png) 100% 100%/10px 19.5px repeat-x;height:10px;width:50px;display:inline-block;float:none}.bangumi-starlight{background:url(https://cdn.jsdelivr.net/npm/hexo-bilibili-bangumi@1.7.9/lib/img/rate_star_2x.png) 0 0/10px 19.5px repeat-x;height:10px;display:block;width:100%}.bangumi-starlight.stars1{width:5px}.bangumi-starlight.stars2{width:10px}.bangumi-starlight.stars3{width:15px}.bangumi-starlight.stars4{width:20px}.bangumi-starlight.stars5{width:25px}.bangumi-starlight.stars6{width:30px}.bangumi-starlight.stars7{width:35px}.bangumi-starlight.stars8{width:40px}.bangumi-starlight.stars9{width:45px}.bangumi-starlight.stars10{width:50px}.bangumi-info .bangumi-progress{width:100%;height:24px;background-color:#f2f2f2;border-radius:5px;overflow:hidden;font-size:16px;text-align:center;position:relative}.bangumi-info .bangumi-progress-text{z-index:100;position:relative;color:#3c4858;line-height:24px}.bangumi-info .bangumi-progress .progress-bar{z-index:50;height:100%;background-color:#007bffad;border-radius:5px;position:absolute;top:0}
+    
+</style>
+<div class="bangumi-tabs">
+    <a class="bangumi-tab" id="bangumi-tab1" href="javascript:;" rel="external" target="_self" onclick="return false">
+    想看
+    (0)</a>
+    <a class="bangumi-tab" id="bangumi-tab2" href="javascript:;" rel="external" target="_self" onclick="return false">
+        在看
+        (17)</a>
+    <a class="bangumi-tab" id="bangumi-tab3" href="javascript:;" rel="external" target="_self" onclick="return false">
+        已看
+        (0)</a>
+</div>
+<div>
+    <div id="bangumi-item1">
+        
+        
+        <div class="bangumi-pagination">
+    <a class="bangumi-button bangumi-firstpage" href="javascript:;" target="_self" onclick="return false"> 首页</a>
+    <a class="bangumi-button bangumi-previouspage" href="javascript:;" target="_self" onclick="return false">上一页</a>
+    <span class="bangumi-pagenum">2 / 3</span>
+    <a class="bangumi-button bangumi-nextpage" href="javascript:;" target="_self" onclick="return false">下一页</a>
+    <a class="bangumi-button bangumi-lastpage" href="javascript:;" target="_self" onclick="return false">尾页</a>
+</div>
+        
+    </div>
+    <div id="bangumi-item2">
+        
+        
+        <div class="bangumi-item">
+    <div class="bangumi-picture"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i0.hdslb.com/bfs/bangumi/image/75e12c71e61586e8c6ae9bb7ffc0cc59638f5b5a.png"  referrerPolicy="no-referrer" width="110" style="width:110px;margin:20px auto;" />
+    </div>
+    <div class="bangumi-info">
+        <div class="bangumi-title">
+            <a target="_blank" href="https://www.bilibili.com/bangumi/media/md23775603/">仙王的日常生活 第五季</a>
+        </div>
+        <div class="bangumi-meta">
+            <span class="bangumi-info-items" >
+                
+                <span class="bangumi-info-item">
+                <span class="bangumi-info-total">-</span><em
+                        class="bangumi-info-label-em">0</em>
+                </span>
+                
+                
+                <span class="bangumi-info-item bangumi-area">
+                    <span class="bangumi-info-label">国创</span> <em>中国大陆</em>
+                </span>
+                
+                <span class="bangumi-info-item bangumi-play">
+                    <span class="bangumi-info-label">总播放</span> <em>19.5 万</em>
+                </span>
+                <span class="bangumi-info-item bangumi-follow">
+                    <span class="bangumi-info-label">关注</span> <em>1073.5 万</em>
+                </span>
+                <span class="bangumi-info-item bangumi-coin">
+                    <span class="bangumi-info-label">硬币</span> <em>1114</em>
+                </span>
+                <span class="bangumi-info-item bangumi-danmaku">
+                    <span class="bangumi-info-label">弹幕</span> <em>972</em>
+                </span>
+                <span class="bangumi-info-item bangumi-info-item-score">
+                    <span class="bangumi-info-label">评分</span> <em>-</em>
+                </span>
+            </span>
+        </div>
+        
+        <div class="bangumi-comments" style="margin-top: 10px;"><p>简介：码字的爸、神秘的妈、全新的妹妹和爱吃干脆面的他，妹妹王暖的到来给王令一家的生活带来了翻天覆地的变化，如何当一个合格的哥哥成为了仙王王令的新烦恼。王暖异于常人的强大似乎早在王家人的意料之中，于是王令决定...</p> </div>
+    </div>
+</div>
+
+        
+        <div class="bangumi-item">
+    <div class="bangumi-picture"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i0.hdslb.com/bfs/bangumi/image/07a4ec8e2a95558a99859e1e374fe4b634e47aaf.png"  referrerPolicy="no-referrer" width="110" style="width:110px;margin:20px auto;" />
+    </div>
+    <div class="bangumi-info">
+        <div class="bangumi-title">
+            <a target="_blank" href="https://www.bilibili.com/bangumi/media/md21226899/">鬼灭之刃 柱训练篇</a>
+        </div>
+        <div class="bangumi-meta">
+            <span class="bangumi-info-items" >
+                
+                <span class="bangumi-info-item">
+                <span class="bangumi-info-total">全8话</span><em
+                        class="bangumi-info-label-em">0</em>
+                </span>
+                
+                
+                <span class="bangumi-info-item bangumi-area">
+                    <span class="bangumi-info-label">番剧</span> <em>日本</em>
+                </span>
+                
+                <span class="bangumi-info-item bangumi-play">
+                    <span class="bangumi-info-label">总播放</span> <em>1.2 亿</em>
+                </span>
+                <span class="bangumi-info-item bangumi-follow">
+                    <span class="bangumi-info-label">关注</span> <em>1698.5 万</em>
+                </span>
+                <span class="bangumi-info-item bangumi-coin">
+                    <span class="bangumi-info-label">硬币</span> <em>32.8 万</em>
+                </span>
+                <span class="bangumi-info-item bangumi-danmaku">
+                    <span class="bangumi-info-label">弹幕</span> <em>74.0 万</em>
+                </span>
+                <span class="bangumi-info-item bangumi-info-item-score">
+                    <span class="bangumi-info-label">评分</span> <em>9.7</em>
+                </span>
+            </span>
+        </div>
+        
+        <div class="bangumi-comments" style="margin-top: 10px;"><p>简介：以集英社《JUMP COMICS》1卷~23卷累积发行量突破1亿5000万册的吾峠呼世晴的漫画作品为原作。动画由ufotable制作。
+
+本作的开端是，家人被鬼杀害的少年灶门炭治郎，为了让变成鬼的妹妹...</p> </div>
+    </div>
+</div>
+
+        
+        <div class="bangumi-item">
+    <div class="bangumi-picture"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i0.hdslb.com/bfs/bangumi/image/6806055cb3a313ff70bb57f899ef49189e5d4c42.png"  referrerPolicy="no-referrer" width="110" style="width:110px;margin:20px auto;" />
+    </div>
+    <div class="bangumi-info">
+        <div class="bangumi-title">
+            <a target="_blank" href="https://www.bilibili.com/bangumi/media/md20140389/">鬼灭之刃 刀匠村篇</a>
+        </div>
+        <div class="bangumi-meta">
+            <span class="bangumi-info-items" >
+                
+                <span class="bangumi-info-item">
+                <span class="bangumi-info-total">全13话</span><em
+                        class="bangumi-info-label-em">0</em>
+                </span>
+                
+                
+                <span class="bangumi-info-item bangumi-area">
+                    <span class="bangumi-info-label">番剧</span> <em>日本</em>
+                </span>
+                
+                <span class="bangumi-info-item bangumi-play">
+                    <span class="bangumi-info-label">总播放</span> <em>2.6 亿</em>
+                </span>
+                <span class="bangumi-info-item bangumi-follow">
+                    <span class="bangumi-info-label">关注</span> <em>1584.2 万</em>
+                </span>
+                <span class="bangumi-info-item bangumi-coin">
+                    <span class="bangumi-info-label">硬币</span> <em>57.5 万</em>
+                </span>
+                <span class="bangumi-info-item bangumi-danmaku">
+                    <span class="bangumi-info-label">弹幕</span> <em>78.9 万</em>
+                </span>
+                <span class="bangumi-info-item bangumi-info-item-score">
+                    <span class="bangumi-info-label">评分</span> <em>9.2</em>
+                </span>
+            </span>
+        </div>
+        
+        <div class="bangumi-comments" style="margin-top: 10px;"><p>简介：故事来到了新的地方——
+炭治郎的目的地是「刀匠村」。
+与鬼杀队的最强剑士，霞柱·时透无一郎与恋柱·甘露寺蜜璃再会，而鬼也悄然逼近。
+炭治郎一行人新的战斗即将开始。...</p> </div>
+    </div>
+</div>
+
+        
+        <div class="bangumi-item">
+    <div class="bangumi-picture"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i0.hdslb.com/bfs/bangumi/image/6a84059e155f915146f5f00b2f85fd08ace099d7.png"  referrerPolicy="no-referrer" width="110" style="width:110px;margin:20px auto;" />
+    </div>
+    <div class="bangumi-info">
+        <div class="bangumi-title">
+            <a target="_blank" href="https://www.bilibili.com/bangumi/media/md21483320/">剧场版 黑色四叶草 魔法帝之剑</a>
+        </div>
+        <div class="bangumi-meta">
+            <span class="bangumi-info-items" >
+                
+                <span class="bangumi-info-item">
+                <span class="bangumi-info-total">全1话</span><em
+                        class="bangumi-info-label-em">0</em>
+                </span>
+                
+                
+                <span class="bangumi-info-item bangumi-area">
+                    <span class="bangumi-info-label">番剧</span> <em>日本</em>
+                </span>
+                
+                <span class="bangumi-info-item bangumi-play">
+                    <span class="bangumi-info-label">总播放</span> <em>207.7 万</em>
+                </span>
+                <span class="bangumi-info-item bangumi-follow">
+                    <span class="bangumi-info-label">关注</span> <em>320.4 万</em>
+                </span>
+                <span class="bangumi-info-item bangumi-coin">
+                    <span class="bangumi-info-label">硬币</span> <em>3.3 万</em>
+                </span>
+                <span class="bangumi-info-item bangumi-danmaku">
+                    <span class="bangumi-info-label">弹幕</span> <em>2.1 万</em>
+                </span>
+                <span class="bangumi-info-item bangumi-info-item-score">
+                    <span class="bangumi-info-label">评分</span> <em>9.8</em>
+                </span>
+            </span>
+        </div>
+        
+        <div class="bangumi-comments" style="margin-top: 10px;"><p>简介：在梦想成为魔法帝的亚斯塔面前的，是历代魔法帝——
+在魔法即是一切的世界里，有一个生来就无法使用魔法的少年亚斯塔。他为了跨越逆境，证明自己的力量，与好对手由诺一起以魔导士的顶点“魔法帝”为目标，与众多强...</p> </div>
+    </div>
+</div>
+
+        
+        <div class="bangumi-item">
+    <div class="bangumi-picture"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i0.hdslb.com/bfs/bangumi/image/1598557843bdb253070c35dd22760026693e0a2c.png"  referrerPolicy="no-referrer" width="110" style="width:110px;margin:20px auto;" />
+    </div>
+    <div class="bangumi-info">
+        <div class="bangumi-title">
+            <a target="_blank" href="https://www.bilibili.com/bangumi/media/md28339914/">仙王的日常生活 第四季</a>
+        </div>
+        <div class="bangumi-meta">
+            <span class="bangumi-info-items" >
+                
+                <span class="bangumi-info-item">
+                <span class="bangumi-info-total">全12话</span><em
+                        class="bangumi-info-label-em">0</em>
+                </span>
+                
+                
+                <span class="bangumi-info-item bangumi-area">
+                    <span class="bangumi-info-label">国创</span> <em>中国大陆</em>
+                </span>
+                
+                <span class="bangumi-info-item bangumi-play">
+                    <span class="bangumi-info-label">总播放</span> <em>1.3 亿</em>
+                </span>
+                <span class="bangumi-info-item bangumi-follow">
+                    <span class="bangumi-info-label">关注</span> <em>964.2 万</em>
+                </span>
+                <span class="bangumi-info-item bangumi-coin">
+                    <span class="bangumi-info-label">硬币</span> <em>31.1 万</em>
+                </span>
+                <span class="bangumi-info-item bangumi-danmaku">
+                    <span class="bangumi-info-label">弹幕</span> <em>27.9 万</em>
+                </span>
+                <span class="bangumi-info-item bangumi-info-item-score">
+                    <span class="bangumi-info-label">评分</span> <em>8.5</em>
+                </span>
+            </span>
+        </div>
+        
+        <div class="bangumi-comments" style="margin-top: 10px;"><p>简介：太阳岛事件后，王令和伙伴们重新回归了自己向往的和平日常。华修国的传奇剑圣为寻找衣钵继承人，隐姓埋名进入六十门担任体术指导。然而，他的师弟，人送外号邪剑神的天字号恶人陈南玄却对师兄积怨已久，邪剑神的一众...</p> </div>
+    </div>
+</div>
+
+        
+        <div class="bangumi-item">
+    <div class="bangumi-picture"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i0.hdslb.com/bfs/bangumi/image/a524567f86ec21368731f6dc283f66bd1bd0af92.png"  referrerPolicy="no-referrer" width="110" style="width:110px;margin:20px auto;" />
+    </div>
+    <div class="bangumi-info">
+        <div class="bangumi-title">
+            <a target="_blank" href="https://www.bilibili.com/bangumi/media/md21086686/">间谍过家家 第二季</a>
+        </div>
+        <div class="bangumi-meta">
+            <span class="bangumi-info-items" >
+                
+                <span class="bangumi-info-item">
+                <span class="bangumi-info-total">全12话</span><em
+                        class="bangumi-info-label-em">0</em>
+                </span>
+                
+                
+                <span class="bangumi-info-item bangumi-area">
+                    <span class="bangumi-info-label">番剧</span> <em>日本</em>
+                </span>
+                
+                <span class="bangumi-info-item bangumi-play">
+                    <span class="bangumi-info-label">总播放</span> <em>1.6 亿</em>
+                </span>
+                <span class="bangumi-info-item bangumi-follow">
+                    <span class="bangumi-info-label">关注</span> <em>1253.6 万</em>
+                </span>
+                <span class="bangumi-info-item bangumi-coin">
+                    <span class="bangumi-info-label">硬币</span> <em>34.4 万</em>
+                </span>
+                <span class="bangumi-info-item bangumi-danmaku">
+                    <span class="bangumi-info-label">弹幕</span> <em>37.0 万</em>
+                </span>
+                <span class="bangumi-info-item bangumi-info-item-score">
+                    <span class="bangumi-info-label">评分</span> <em>9.7</em>
+                </span>
+            </span>
+        </div>
+        
+        <div class="bangumi-comments" style="margin-top: 10px;"><p>简介：每个人都有不可告人的一面。
+
+这是一个世界各国均暗地里进行激烈情报战的时代。奥斯塔尼亚（Ostania）与维斯达利斯（Westalis）的冷战状态已经持续数十年。
+
+&lt;黄昏&gt;是维斯达利斯情报局奥斯塔尼...</p> </div>
+    </div>
+</div>
+
+        
+        <div class="bangumi-item">
+    <div class="bangumi-picture"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i0.hdslb.com/bfs/bangumi/image/f50a08cc1562f2c1e933b656c00db3fcafd110e9.png"  referrerPolicy="no-referrer" width="110" style="width:110px;margin:20px auto;" />
+    </div>
+    <div class="bangumi-info">
+        <div class="bangumi-title">
+            <a target="_blank" href="https://www.bilibili.com/bangumi/media/md28237119/">间谍过家家</a>
+        </div>
+        <div class="bangumi-meta">
+            <span class="bangumi-info-items" >
+                
+                <span class="bangumi-info-item">
+                <span class="bangumi-info-total">全25话</span><em
+                        class="bangumi-info-label-em">0</em>
+                </span>
+                
+                
+                <span class="bangumi-info-item bangumi-area">
+                    <span class="bangumi-info-label">番剧</span> <em>日本</em>
+                </span>
+                
+                <span class="bangumi-info-item bangumi-play">
+                    <span class="bangumi-info-label">总播放</span> <em>8.3 亿</em>
+                </span>
+                <span class="bangumi-info-item bangumi-follow">
+                    <span class="bangumi-info-label">关注</span> <em>1270.3 万</em>
+                </span>
+                <span class="bangumi-info-item bangumi-coin">
+                    <span class="bangumi-info-label">硬币</span> <em>322.9 万</em>
+                </span>
+                <span class="bangumi-info-item bangumi-danmaku">
+                    <span class="bangumi-info-label">弹幕</span> <em>331.5 万</em>
+                </span>
+                <span class="bangumi-info-item bangumi-info-item-score">
+                    <span class="bangumi-info-label">评分</span> <em>9.7</em>
+                </span>
+            </span>
+        </div>
+        
+        <div class="bangumi-comments" style="margin-top: 10px;"><p>简介：每个人都有不可告人的一面。
+
+这是一个世界各国均暗地里进行激烈情报战的时代。奥斯塔尼亚（Ostania）与维斯达利斯（Westalis）的冷战状态已经持续数十年。
+
+&lt;黄昏&gt;是维斯达利斯情报局奥斯塔尼...</p> </div>
+    </div>
+</div>
+
+        
+        <div class="bangumi-item">
+    <div class="bangumi-picture"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i0.hdslb.com/bfs/bangumi/image/9870f898b8a39bbb8048f34317f8d78a02cc1770.png"  referrerPolicy="no-referrer" width="110" style="width:110px;margin:20px auto;" />
+    </div>
+    <div class="bangumi-info">
+        <div class="bangumi-title">
+            <a target="_blank" href="https://www.bilibili.com/bangumi/media/md4315402/">三体</a>
+        </div>
+        <div class="bangumi-meta">
+            <span class="bangumi-info-items" >
+                
+                <span class="bangumi-info-item">
+                <span class="bangumi-info-total">全15话</span><em
+                        class="bangumi-info-label-em">0</em>
+                </span>
+                
+                
+                <span class="bangumi-info-item bangumi-area">
+                    <span class="bangumi-info-label">国创</span> <em>中国大陆</em>
+                </span>
+                
+                <span class="bangumi-info-item bangumi-play">
+                    <span class="bangumi-info-label">总播放</span> <em>7.5 亿</em>
+                </span>
+                <span class="bangumi-info-item bangumi-follow">
+                    <span class="bangumi-info-label">关注</span> <em>690.4 万</em>
+                </span>
+                <span class="bangumi-info-item bangumi-coin">
+                    <span class="bangumi-info-label">硬币</span> <em>235.6 万</em>
+                </span>
+                <span class="bangumi-info-item bangumi-danmaku">
+                    <span class="bangumi-info-label">弹幕</span> <em>186.1 万</em>
+                </span>
+                <span class="bangumi-info-item bangumi-info-item-score">
+                    <span class="bangumi-info-label">评分</span> <em>8.2</em>
+                </span>
+            </span>
+        </div>
+        
+        <div class="bangumi-comments" style="margin-top: 10px;"><p>简介：无数细线横亘在星空之中，如同一把巨大的刷子。三体星舰队将于400年后抵达。遥远蝴蝶扇动着翅膀，也改变了罗辑的命运，轰然打开的门后是世界中心——面壁计划开启。同时，智子所创建的破壁室内，破壁人一一就位…...</p> </div>
+    </div>
+</div>
+
+        
+        <div class="bangumi-item">
+    <div class="bangumi-picture"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i0.hdslb.com/bfs/bangumi/image/9c730181da9d1e56c1ac6c345380ae619d781420.png"  referrerPolicy="no-referrer" width="110" style="width:110px;margin:20px auto;" />
+    </div>
+    <div class="bangumi-info">
+        <div class="bangumi-title">
+            <a target="_blank" href="https://www.bilibili.com/bangumi/media/md20140758/">辉夜大小姐想让我告白 剧场版</a>
+        </div>
+        <div class="bangumi-meta">
+            <span class="bangumi-info-items" >
+                
+                <span class="bangumi-info-item">
+                <span class="bangumi-info-total">全4话</span><em
+                        class="bangumi-info-label-em">0</em>
+                </span>
+                
+                
+                <span class="bangumi-info-item bangumi-area">
+                    <span class="bangumi-info-label">番剧</span> <em>日本</em>
+                </span>
+                
+                <span class="bangumi-info-item bangumi-play">
+                    <span class="bangumi-info-label">总播放</span> <em>565.2 万</em>
+                </span>
+                <span class="bangumi-info-item bangumi-follow">
+                    <span class="bangumi-info-label">关注</span> <em>972.7 万</em>
+                </span>
+                <span class="bangumi-info-item bangumi-coin">
+                    <span class="bangumi-info-label">硬币</span> <em>1.4 万</em>
+                </span>
+                <span class="bangumi-info-item bangumi-danmaku">
+                    <span class="bangumi-info-label">弹幕</span> <em>1581</em>
+                </span>
+                <span class="bangumi-info-item bangumi-info-item-score">
+                    <span class="bangumi-info-label">评分</span> <em>-</em>
+                </span>
+            </span>
+        </div>
+        
+        <div class="bangumi-comments" style="margin-top: 10px;"><p>简介：在秀知院学园的学生会里，副会长四宫辉夜和会长白银御行相识了。两位天才在经历了漫长的恋爱头脑战之后，终于都明白了对方的心意，并在“奉心祭”上第一次接吻。
+但是，两人都没有做出明确的表白，本以为会成为一对...</p> </div>
+    </div>
+</div>
+
+        
+        <div class="bangumi-item">
+    <div class="bangumi-picture"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i0.hdslb.com/bfs/bangumi/image/f298e43fd9673abdaf86ecb30ba8197410ee3c3e.png"  referrerPolicy="no-referrer" width="110" style="width:110px;margin:20px auto;" />
+    </div>
+    <div class="bangumi-info">
+        <div class="bangumi-title">
+            <a target="_blank" href="https://www.bilibili.com/bangumi/media/md28339709/">路人超能100 III(灵能百分百 第三季)</a>
+        </div>
+        <div class="bangumi-meta">
+            <span class="bangumi-info-items" >
+                
+                <span class="bangumi-info-item">
+                <span class="bangumi-info-total">全12话</span><em
+                        class="bangumi-info-label-em">0</em>
+                </span>
+                
+                
+                <span class="bangumi-info-item bangumi-area">
+                    <span class="bangumi-info-label">番剧</span> <em>日本</em>
+                </span>
+                
+                <span class="bangumi-info-item bangumi-play">
+                    <span class="bangumi-info-label">总播放</span> <em>1.1 亿</em>
+                </span>
+                <span class="bangumi-info-item bangumi-follow">
+                    <span class="bangumi-info-label">关注</span> <em>547.8 万</em>
+                </span>
+                <span class="bangumi-info-item bangumi-coin">
+                    <span class="bangumi-info-label">硬币</span> <em>71.5 万</em>
+                </span>
+                <span class="bangumi-info-item bangumi-danmaku">
+                    <span class="bangumi-info-label">弹幕</span> <em>39.7 万</em>
+                </span>
+                <span class="bangumi-info-item bangumi-info-item-score">
+                    <span class="bangumi-info-label">评分</span> <em>9.9</em>
+                </span>
+            </span>
+        </div>
+        
+        <div class="bangumi-comments" style="margin-top: 10px;"><p>简介：一旦达到100时便会发生情况的青春超能力故事。
+某个数值达到「100」时就会爆发的少年——龙套。
+他看似平平无奇，其实拥有着强大的超能力。
+他的师父，冒牌灵能力者——灵幻新隆开有一家灵类咨询所。在帮师...</p> </div>
+    </div>
+</div>
+
+        
+        <div class="bangumi-item">
+    <div class="bangumi-picture"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i0.hdslb.com/bfs/bangumi/image/4b2547ffdd6f40f997454b37c0ad48624a1730d9.jpg"  referrerPolicy="no-referrer" width="110" style="width:110px;margin:20px auto;" />
+    </div>
+    <div class="bangumi-info">
+        <div class="bangumi-title">
+            <a target="_blank" href="https://www.bilibili.com/bangumi/media/md28237126/">夏日重现</a>
+        </div>
+        <div class="bangumi-meta">
+            <span class="bangumi-info-items" >
+                
+                <span class="bangumi-info-item">
+                <span class="bangumi-info-total">全25话</span><em
+                        class="bangumi-info-label-em">0</em>
+                </span>
+                
+                
+                <span class="bangumi-info-item bangumi-area">
+                    <span class="bangumi-info-label">番剧</span> <em>日本</em>
+                </span>
+                
+                <span class="bangumi-info-item bangumi-play">
+                    <span class="bangumi-info-label">总播放</span> <em>2.5 亿</em>
+                </span>
+                <span class="bangumi-info-item bangumi-follow">
+                    <span class="bangumi-info-label">关注</span> <em>495.9 万</em>
+                </span>
+                <span class="bangumi-info-item bangumi-coin">
+                    <span class="bangumi-info-label">硬币</span> <em>155.9 万</em>
+                </span>
+                <span class="bangumi-info-item bangumi-danmaku">
+                    <span class="bangumi-info-label">弹幕</span> <em>140.7 万</em>
+                </span>
+                <span class="bangumi-info-item bangumi-info-item-score">
+                    <span class="bangumi-info-label">评分</span> <em>9.8</em>
+                </span>
+            </span>
+        </div>
+        
+        <div class="bangumi-comments" style="margin-top: 10px;"><p>简介：“潮死了。”
+
+网代慎平收到发小——小舟潮的讣告后，回到了阔别两年的故乡——和歌山市日都岛。
+
+慎平与亲人朋友重聚，葬礼也顺利地进行着。
+然而，好友告诉他“潮的死有疑点，可能是他杀”。
+
+第二天，邻近...</p> </div>
+    </div>
+</div>
+
+        
+        <div class="bangumi-item">
+    <div class="bangumi-picture"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i0.hdslb.com/bfs/bangumi/image/ffe6ebdf6770e7975bf830bee73a03c79e81b690.png"  referrerPolicy="no-referrer" width="110" style="width:110px;margin:20px auto;" />
+    </div>
+    <div class="bangumi-info">
+        <div class="bangumi-title">
+            <a target="_blank" href="https://www.bilibili.com/bangumi/media/md28237120/">辉夜大小姐想让我告白 -究极浪漫-</a>
+        </div>
+        <div class="bangumi-meta">
+            <span class="bangumi-info-items" >
+                
+                <span class="bangumi-info-item">
+                <span class="bangumi-info-total">全13话</span><em
+                        class="bangumi-info-label-em">0</em>
+                </span>
+                
+                
+                <span class="bangumi-info-item bangumi-area">
+                    <span class="bangumi-info-label">番剧</span> <em>日本</em>
+                </span>
+                
+                <span class="bangumi-info-item bangumi-play">
+                    <span class="bangumi-info-label">总播放</span> <em>1.3 亿</em>
+                </span>
+                <span class="bangumi-info-item bangumi-follow">
+                    <span class="bangumi-info-label">关注</span> <em>940.3 万</em>
+                </span>
+                <span class="bangumi-info-item bangumi-coin">
+                    <span class="bangumi-info-label">硬币</span> <em>111.2 万</em>
+                </span>
+                <span class="bangumi-info-item bangumi-danmaku">
+                    <span class="bangumi-info-label">弹幕</span> <em>81.0 万</em>
+                </span>
+                <span class="bangumi-info-item bangumi-info-item-score">
+                    <span class="bangumi-info-label">评分</span> <em>9.5</em>
+                </span>
+            </span>
+        </div>
+        
+        <div class="bangumi-comments" style="margin-top: 10px;"><p>简介：秀知院学园是秀才云集的菁英学校，在学生会中担任学生会副会长·四宫辉夜遇见了学生会长·白银御行。
+原以为这两个任谁都觉得很登对的天才应该很快就会在一起，但这两人却因为过高的自尊心导致他们终没能向对方告白...</p> </div>
+    </div>
+</div>
+
+        
+        <div class="bangumi-item">
+    <div class="bangumi-picture"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i0.hdslb.com/bfs/bangumi/a79e331b7443ed5df5a2acd345dc41d598d46ff9.jpg"  referrerPolicy="no-referrer" width="110" style="width:110px;margin:20px auto;" />
+    </div>
+    <div class="bangumi-info">
+        <div class="bangumi-title">
+            <a target="_blank" href="https://www.bilibili.com/bangumi/media/md6339/">欢迎来到实力至上主义的教室</a>
+        </div>
+        <div class="bangumi-meta">
+            <span class="bangumi-info-items" >
+                
+                <span class="bangumi-info-item">
+                <span class="bangumi-info-total">全12话</span><em
+                        class="bangumi-info-label-em">0</em>
+                </span>
+                
+                
+                <span class="bangumi-info-item bangumi-area">
+                    <span class="bangumi-info-label">番剧</span> <em>日本</em>
+                </span>
+                
+                <span class="bangumi-info-item bangumi-play">
+                    <span class="bangumi-info-label">总播放</span> <em>2.6 亿</em>
+                </span>
+                <span class="bangumi-info-item bangumi-follow">
+                    <span class="bangumi-info-label">关注</span> <em>756.8 万</em>
+                </span>
+                <span class="bangumi-info-item bangumi-coin">
+                    <span class="bangumi-info-label">硬币</span> <em>84.4 万</em>
+                </span>
+                <span class="bangumi-info-item bangumi-danmaku">
+                    <span class="bangumi-info-label">弹幕</span> <em>459.6 万</em>
+                </span>
+                <span class="bangumi-info-item bangumi-info-item-score">
+                    <span class="bangumi-info-label">评分</span> <em>8.9</em>
+                </span>
+            </span>
+        </div>
+        
+        <div class="bangumi-comments" style="margin-top: 10px;"><p>简介：——真正的实力，平等究竟是什么？
+几乎百分之百实现升学、就业目标的全国首屈一指的名门校──高度育成高等学校。这间简直如同乐园般的学校，真面目却是唯有优秀者才能享受优待的实力至上主义学校！绫小路清隆被分...</p> </div>
+    </div>
+</div>
+
+        
+        <div class="bangumi-item">
+    <div class="bangumi-picture"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i0.hdslb.com/bfs/bangumi/aed993698a78b811d9de43ff2194701949810f86.jpg"  referrerPolicy="no-referrer" width="110" style="width:110px;margin:20px auto;" />
+    </div>
+    <div class="bangumi-info">
+        <div class="bangumi-title">
+            <a target="_blank" href="https://www.bilibili.com/bangumi/media/md863/">[C]THE MONEY OF SOUL AND POSSIBILITY CONTROL</a>
+        </div>
+        <div class="bangumi-meta">
+            <span class="bangumi-info-items" >
+                
+                <span class="bangumi-info-item">
+                <span class="bangumi-info-total">全11话</span><em
+                        class="bangumi-info-label-em">0</em>
+                </span>
+                
+                
+                <span class="bangumi-info-item bangumi-area">
+                    <span class="bangumi-info-label">番剧</span> <em>日本</em>
+                </span>
+                
+                <span class="bangumi-info-item bangumi-play">
+                    <span class="bangumi-info-label">总播放</span> <em>744.4 万</em>
+                </span>
+                <span class="bangumi-info-item bangumi-follow">
+                    <span class="bangumi-info-label">关注</span> <em>65.0 万</em>
+                </span>
+                <span class="bangumi-info-item bangumi-coin">
+                    <span class="bangumi-info-label">硬币</span> <em>1.9 万</em>
+                </span>
+                <span class="bangumi-info-item bangumi-danmaku">
+                    <span class="bangumi-info-label">弹幕</span> <em>8.8 万</em>
+                </span>
+                <span class="bangumi-info-item bangumi-info-item-score">
+                    <span class="bangumi-info-label">评分</span> <em>9.2</em>
+                </span>
+            </span>
+        </div>
+        
+        <div class="bangumi-comments" style="margin-top: 10px;"><p>简介：20XX年，日本正处于严重的巨额财政赤字，日本经济可以说已经崩坏了。在处于终结的危机之中，出现一个名叫“Sovereign Wealth Fund”的金融机构，凭著成功地运用资金，让政府奇迹地实现了财...</p> </div>
+    </div>
+</div>
+
+        
+        <div class="bangumi-item">
+    <div class="bangumi-picture"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i0.hdslb.com/bfs/bangumi/image/f641f81aa1933d73c91d5ef76b525acbcdbcf3e7.png"  referrerPolicy="no-referrer" width="110" style="width:110px;margin:20px auto;" />
+    </div>
+    <div class="bangumi-info">
+        <div class="bangumi-title">
+            <a target="_blank" href="https://www.bilibili.com/bangumi/media/md28235125/">鬼灭之刃 游郭篇</a>
+        </div>
+        <div class="bangumi-meta">
+            <span class="bangumi-info-items" >
+                
+                <span class="bangumi-info-item">
+                <span class="bangumi-info-total">全11话</span><em
+                        class="bangumi-info-label-em">0</em>
+                </span>
+                
+                
+                <span class="bangumi-info-item bangumi-area">
+                    <span class="bangumi-info-label">番剧</span> <em>日本</em>
+                </span>
+                
+                <span class="bangumi-info-item bangumi-play">
+                    <span class="bangumi-info-label">总播放</span> <em>3.3 亿</em>
+                </span>
+                <span class="bangumi-info-item bangumi-follow">
+                    <span class="bangumi-info-label">关注</span> <em>1428.3 万</em>
+                </span>
+                <span class="bangumi-info-item bangumi-coin">
+                    <span class="bangumi-info-label">硬币</span> <em>105.9 万</em>
+                </span>
+                <span class="bangumi-info-item bangumi-danmaku">
+                    <span class="bangumi-info-label">弹幕</span> <em>119.0 万</em>
+                </span>
+                <span class="bangumi-info-item bangumi-info-item-score">
+                    <span class="bangumi-info-label">评分</span> <em>9.7</em>
+                </span>
+            </span>
+        </div>
+        
+        <div class="bangumi-comments" style="margin-top: 10px;"><p>简介：结束了无限列车的任务，炭治郎前往下一个任务地点。
+与鬼杀队最强之一的音柱·宇髄天元一同前往鬼所栖身的游郭之中。
+新的战斗即将开幕。...</p> </div>
+    </div>
+</div>
+
+        
+        <div class="bangumi-item">
+    <div class="bangumi-picture"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i0.hdslb.com/bfs/bangumi/image/ac2bf4cf0a0e661f0d497229f112470572240bb6.png"  referrerPolicy="no-referrer" width="110" style="width:110px;margin:20px auto;" />
+    </div>
+    <div class="bangumi-info">
+        <div class="bangumi-title">
+            <a target="_blank" href="https://www.bilibili.com/bangumi/media/md28235846/">天才王子的赤字国家振兴术</a>
+        </div>
+        <div class="bangumi-meta">
+            <span class="bangumi-info-items" >
+                
+                <span class="bangumi-info-item">
+                <span class="bangumi-info-total">全12话</span><em
+                        class="bangumi-info-label-em">0</em>
+                </span>
+                
+                
+                <span class="bangumi-info-item bangumi-area">
+                    <span class="bangumi-info-label">番剧</span> <em>日本</em>
+                </span>
+                
+                <span class="bangumi-info-item bangumi-play">
+                    <span class="bangumi-info-label">总播放</span> <em>7466.5 万</em>
+                </span>
+                <span class="bangumi-info-item bangumi-follow">
+                    <span class="bangumi-info-label">关注</span> <em>256.7 万</em>
+                </span>
+                <span class="bangumi-info-item bangumi-coin">
+                    <span class="bangumi-info-label">硬币</span> <em>42.4 万</em>
+                </span>
+                <span class="bangumi-info-item bangumi-danmaku">
+                    <span class="bangumi-info-label">弹幕</span> <em>45.5 万</em>
+                </span>
+                <span class="bangumi-info-item bangumi-info-item-score">
+                    <span class="bangumi-info-label">评分</span> <em>9.5</em>
+                </span>
+            </span>
+        </div>
+        
+        <div class="bangumi-comments" style="margin-top: 10px;"><p>简介：暴露在霸权国家威胁下的小国：纳特拉王国
+年纪轻轻就背负国家重担的王子维恩在辅佐官妮妮姆的支持下，发挥自身的天赋，开始施展精明的手段。
+可是，这个国家……已经彻底没救了！
+想要革新内政却没钱。
+想要向外...</p> </div>
+    </div>
+</div>
+
+        
+        <div class="bangumi-item">
+    <div class="bangumi-picture"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i0.hdslb.com/bfs/bangumi/image/aecbaaf4e3e36a2796684c2eff8ceb9b0f247c6d.jpg"  referrerPolicy="no-referrer" width="110" style="width:110px;margin:20px auto;" />
+    </div>
+    <div class="bangumi-info">
+        <div class="bangumi-title">
+            <a target="_blank" href="https://www.bilibili.com/bangumi/media/md6422/">黑色四叶草</a>
+        </div>
+        <div class="bangumi-meta">
+            <span class="bangumi-info-items" >
+                
+                <span class="bangumi-info-item">
+                <span class="bangumi-info-total">全170话</span><em
+                        class="bangumi-info-label-em">0</em>
+                </span>
+                
+                
+                <span class="bangumi-info-item bangumi-area">
+                    <span class="bangumi-info-label">番剧</span> <em>日本</em>
+                </span>
+                
+                <span class="bangumi-info-item bangumi-play">
+                    <span class="bangumi-info-label">总播放</span> <em>4.3 亿</em>
+                </span>
+                <span class="bangumi-info-item bangumi-follow">
+                    <span class="bangumi-info-label">关注</span> <em>328.6 万</em>
+                </span>
+                <span class="bangumi-info-item bangumi-coin">
+                    <span class="bangumi-info-label">硬币</span> <em>133.4 万</em>
+                </span>
+                <span class="bangumi-info-item bangumi-danmaku">
+                    <span class="bangumi-info-label">弹幕</span> <em>328.0 万</em>
+                </span>
+                <span class="bangumi-info-item bangumi-info-item-score">
+                    <span class="bangumi-info-label">评分</span> <em>9.5</em>
+                </span>
+            </span>
+        </div>
+        
+        <div class="bangumi-comments" style="margin-top: 10px;"><p>简介：曾经险些遭到魔神毁灭的世界，拯救它的是一位被后世称为“魔法帝”的魔导士……两位被遗弃在教堂的少年，一位是有卓越魔力跟魔法才能的四叶草魔导书的尤诺，另一位魔法值为零但却意外获得黑色五叶草的魔法书的亚斯塔...</p> </div>
+    </div>
+</div>
+
+        
+        <div class="bangumi-pagination">
+    <a class="bangumi-button bangumi-firstpage" href="javascript:;" target="_self" onclick="return false"> 首页</a>
+    <a class="bangumi-button bangumi-previouspage" href="javascript:;" target="_self" onclick="return false">上一页</a>
+    <span class="bangumi-pagenum">2 / 3</span>
+    <a class="bangumi-button bangumi-nextpage" href="javascript:;" target="_self" onclick="return false">下一页</a>
+    <a class="bangumi-button bangumi-lastpage" href="javascript:;" target="_self" onclick="return false">尾页</a>
+</div>
+        
+    </div>
+    <div id="bangumi-item3">
+        
+        
+        <div class="bangumi-pagination">
+    <a class="bangumi-button bangumi-firstpage" href="javascript:;" target="_self" onclick="return false"> 首页</a>
+    <a class="bangumi-button bangumi-previouspage" href="javascript:;" target="_self" onclick="return false">上一页</a>
+    <span class="bangumi-pagenum">2 / 3</span>
+    <a class="bangumi-button bangumi-nextpage" href="javascript:;" target="_self" onclick="return false">下一页</a>
+    <a class="bangumi-button bangumi-lastpage" href="javascript:;" target="_self" onclick="return false">尾页</a>
+</div>
+        
+    </div>
+</div>
+<script>
+    (function () {
+    
+    const bangumiLazyload = false;
+    "use strict";/* eslint-disable no-plusplus */(function(){// eslint-disable-next-line func-style
+function a(){this.classList.add("bangumi-active");for(var a=this.siblings(),b=0;b<a.length;b++)a[b].classList.remove("bangumi-active");// 显示对应板块
+var c=this.id.replace("tab","item"),d=document.getElementById(c);d.classList.remove("bangumi-hide"),d.classList.add("bangumi-show"),a=document.getElementById(c).siblings();for(var e=0;e<a.length;e++)a[e].classList.remove("bangumi-show"),a[e].classList.add("bangumi-hide")}Element.prototype.siblings=function(){for(var a=[],b=this.parentNode.children,c=0;c<b.length;c++)b[c]!==this&&a.push(b[c]);return a};for(var b=document.getElementsByClassName("bangumi-tab"),c=0;c<b.length;c++)b[c].onclick=a,b[c].onclick.apply(b[c]);"undefined"!=typeof pagenumsPre&&axios.get(new URL("../bangumis.json",window.location.href)).then(function(a){if(a.data){var b={wantWatch:a.data.wantWatch.slice(10).map(function(a){return ejs.render(ejsTemplate,{item:a,loading:loading,metaColor:metaColor,type:type})}).join("\n"),watching:a.data.watching.slice(10).map(function(a){return ejs.render(ejsTemplate,{item:a,loading:loading,metaColor:metaColor,type:type})}).join("\n"),watched:a.data.watched.slice(10).map(function(a){return ejs.render(ejsTemplate,{item:a,loading:loading,metaColor:metaColor,type:type})}).join("\n")};document.querySelectorAll("#bangumi-item1>.bangumi-pagination")[0].insertAdjacentHTML("beforeBegin",b.wantWatch),document.querySelectorAll("#bangumi-item2>.bangumi-pagination")[0].insertAdjacentHTML("beforeBegin",b.watching),document.querySelectorAll("#bangumi-item3>.bangumi-pagination")[0].insertAdjacentHTML("beforeBegin",b.watched)}})})();
+
+    document.getElementsByClassName('bangumi-tab')[1].click();
+    /* eslint-disable no-plusplus, func-style */(function(){var a=Math.ceil;function b(b,c){return`${b+1} / ${a(0==c.length/10?1:a(c.length/10))}`}function c(){const a=this.parentNode.siblings();g(a,0),this.parentNode.getElementsByClassName("bangumi-pagenum")[0].innerText=b(0,a)}function d(){const a=this.parentNode.siblings();let c=this.parentNode.getElementsByClassName("bangumi-pagenum")[0].innerText;c=c.substr(0,c.indexOf("/")-1),c=parseInt(c,10)-1,0<c&&c--,g(a,c),this.parentNode.getElementsByClassName("bangumi-pagenum")[0].innerText=b(c,a)}function e(){const c=this.parentNode.siblings();let d=this.parentNode.getElementsByClassName("bangumi-pagenum")[0].innerText;d=d.substr(0,d.indexOf("/")-1),d=parseInt(d,10)-1,d<a(c.length/10)-1&&d++,g(c,d),this.parentNode.getElementsByClassName("bangumi-pagenum")[0].innerText=b(d,c)}function f(){const c=this.parentNode.siblings();g(c,a(c.length/10)-1),this.parentNode.getElementsByClassName("bangumi-pagenum")[0].innerText=b(-1==a(c.length/10)-1?0:a(c.length/10)-1,c)}function g(a,b){for(let c=0;c<a.length;c++)if(Math.floor(c/10)===b){a[c].classList.remove("bangumi-hide");const[b]=a[c].getElementsByTagName("img");bangumiLazyload&&(b.src=b.getAttribute("data-src"))}else a[c].classList.add("bangumi-hide")}const h=document.getElementsByClassName("bangumi-firstpage"),j=document.getElementsByClassName("bangumi-previouspage"),k=document.getElementsByClassName("bangumi-nextpage"),l=document.getElementsByClassName("bangumi-lastpage"),m=document.getElementsByClassName("bangumi-pagenum");for(let b=0;b<h.length;b++){h[b].onclick=c,j[b].onclick=d,k[b].onclick=e,l[b].onclick=f;// set page num
+const g="undefined"==typeof pagenumsPre?m[b].parentNode.siblings().length:pagenumsPre[b]??m[b].parentNode.siblings().length;h[b].click(),m[b].innerText=`1 / ${0===a(g/10)?1:a(g/10)}`}})();
+
+    })();
+</script>
+</div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">轻语</div><div class="author-info-description">生活明朗,万物可爱.</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">2</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/undefined/7a776471.html" title="我的第一篇文章">我的第一篇文章</a><time datetime="2024-12-24T05:56:45.000Z" title="发表于 2024-12-24 13:56:45">2024-12-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/undefined/4a17b156.html" title="Hello World">Hello World</a><time datetime="2024-12-24T05:11:55.347Z" title="发表于 2024-12-24 13:11:55">2024-12-24</time></div></div></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
+      
+    </div>
+    <ul class="card-archive-list">
+  
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2024/12/">
+          <span class="card-archive-list-date">十二月 2024</span>
+          <span class="card-archive-list-count">2</span>
+        </a>
+      </li>
+    </ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">2</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2024-12-24T09:32:45.831Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2024 By 轻语</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"></div><div class="aplayer no-destroy" data-id="8152976493" data-server="netease" data-type="playlist"   data-order="list" data-fixed="true" data-preload="auto" data-autoplay="false" data-mutex="true" ></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/"});</script></body></html>
