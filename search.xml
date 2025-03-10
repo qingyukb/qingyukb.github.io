@@ -1,50 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search>
-  <entry>
-    <title>Hello World</title>
-    <url>/undefined/4a17b156.html</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>使用 Github Pages 和 Hexo 搭建自己的独立博客</title>
-    <url>/undefined/7a776471.html</url>
-    <content><![CDATA[<p></p><h1>入门</h1><p></p>
-<p></p><h2>Github</h2><br>搭建一个这样的 Blog 首先你得知道什么是 Github 和 Github Pages，你可以理解为咱们没有服务器，咱们将页面托管到了 Github 上<p></p>
-<p></p><h2>Github Pages</h2><br>Github Pages 可以被认为是用户编写的、托管在 github 上的静态网页。使用 Github Pages 可以为你提供一个免费的服务器，免去了自己搭建服务器和写数据库的麻烦。此外还可以绑定自己的域名。<p></p>
-<p></p><h2>Hexo</h2><br>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。<p></p>
-<p></p><h1>node.js</h1><br><details class="folding-tag"><summary> 安装node.js </summary>
-              <div class="content">
-              <p>进入 node.js 官网：<a href="https://nodejs.cn/download/">node.js官网</a><br>按照自己的机器选择对应的版本下载，我是 windous 64 位<br><img src="https://www.helloimg.com/i/2024/12/27/676eb7764e8b5.png" alt="nodejs"><br>然后差不多就是一直下一步 hhh~<br>如果遇到什么问题，一般百度都能解决，这里就不在赘述.</p>
-              </div>
-            </details><p></p>
-<p></p><h1>Git</h1><br><details class="folding-tag"><summary> 安装git </summary>
-              <div class="content">
-              <p>这是 Git 官网：<a href="https://git-scm.com/downloads">git官网</a><br>一般就是下载好自己对应的版本后一直下一步就好了</p>
-              </div>
-            </details><p></p>
-<p></p><h1>检验软件是否安装成功</h1><br>同时按下 Win 键和 R 键打开运行窗口,输入 <code>cmd</code> ，然后输入以下命令，有相应版本信息显示则安装成功，若不正确可以卸载软件重新安装。<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git --version</span><br><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure><br>此外若安装成功，在桌面右键鼠标，可以看到菜单里多了 Git GUI Here 和 Git Bash Here两个选项，第一个是图形界面的Git操作，另一个是命令行，我们一般使用第二个<br><img src="https://www.helloimg.com/i/2024/12/27/676eb7668f7cc.png" alt="git" title="git"><p></p>
-<p></p><h1>Hexo 安装</h1><br>选择一个磁盘，新建一个文件夹，自己重命名文件夹（如：我的文件夹为：F\QiQi_Blog），博客相关文件将储存在此文件夹下，在该文件夹下右键鼠标，点击 Git Bash Here，输入以下 npm 命令即可安装,第一次可能需要久一点输入命令后等一等，再输入第二条命令<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure><br>这个命令表示安装 hexo 的脚手架，如图所示即为安装成功<br><img src="https://www.helloimg.com/i/2024/12/27/676eb76977098.png" alt="hexo" title="hexo"><p></p>
-<p></p><h1>Hexo 初始化配置</h1><br>第一个命令，如果失败了就再输入一次，第二个命令表示安装 hexo 部署到 git page 的 deployer<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo init</span><br><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure><br>Hexo 安装完成后，将会在指定文件夹中新建所需要的文件<p></p>
-<p></p><h1>本地查看效果</h1><br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo generate</span><br><span class="line">hexo server</span><br></pre></td></tr></table></figure><br>执行完即可登录 <a href="http://localhost:4000/">http://localhost:4000/</a> 查看效果<p></p>
-<p></p><h1>将博客部署到 Github Pages 上</h1><br>未完待续<p></p>
-]]></content>
+<search> 
+  
+  
+    
+    <entry>
+      <title>使用 Github Pages 和 Hexo 搭建自己的独立博客</title>
+      <link href="/undefined/7a776471.html"/>
+      <url>/undefined/7a776471.html</url>
+      
+        <content type="html"><![CDATA[<p></p><h1>入门</h1><p></p><p></p><h2>Github</h2><br>搭建一个这样的 Blog 首先你得知道什么是 Github 和 Github Pages，你可以理解为咱们没有服务器，咱们将页面托管到了 Github 上<p></p><p></p><h2>Github Pages</h2><br>Github Pages 可以被认为是用户编写的、托管在 github 上的静态网页。使用 Github Pages 可以为你提供一个免费的服务器，免去了自己搭建服务器和写数据库的麻烦。此外还可以绑定自己的域名。<p></p><p></p><h2>Hexo</h2><br>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。<p></p><p></p><h1>node.js</h1><br><details class="folding-tag"><summary> 安装node.js </summary>              <div class="content">              <p>进入 node.js 官网：<a href="https://nodejs.cn/download/">node.js官网</a><br>按照自己的机器选择对应的版本下载，我是 windous 64 位<br><img src="https://www.helloimg.com/i/2024/12/27/676eb7764e8b5.png" alt="nodejs"><br>然后差不多就是一直下一步 hhh~<br>如果遇到什么问题，一般百度都能解决，这里就不在赘述.</p>              </div>            </details><p></p><p></p><h1>Git</h1><br><details class="folding-tag"><summary> 安装git </summary>              <div class="content">              <p>这是 Git 官网：<a href="https://git-scm.com/downloads">git官网</a><br>一般就是下载好自己对应的版本后一直下一步就好了</p>              </div>            </details><p></p><p></p><h1>检验软件是否安装成功</h1><br>同时按下 Win 键和 R 键打开运行窗口,输入 <code>cmd</code> ，然后输入以下命令，有相应版本信息显示则安装成功，若不正确可以卸载软件重新安装。<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git --version</span><br><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure><br>此外若安装成功，在桌面右键鼠标，可以看到菜单里多了 Git GUI Here 和 Git Bash Here两个选项，第一个是图形界面的Git操作，另一个是命令行，我们一般使用第二个<br><img src="https://www.helloimg.com/i/2024/12/27/676eb7668f7cc.png" alt="git" title="git"><p></p><p></p><h1>Hexo 安装</h1><br>选择一个磁盘，新建一个文件夹，自己重命名文件夹（如：我的文件夹为：F\QiQi_Blog），博客相关文件将储存在此文件夹下，在该文件夹下右键鼠标，点击 Git Bash Here，输入以下 npm 命令即可安装,第一次可能需要久一点输入命令后等一等，再输入第二条命令<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure><br>这个命令表示安装 hexo 的脚手架，如图所示即为安装成功<br><img src="https://www.helloimg.com/i/2024/12/27/676eb76977098.png" alt="hexo" title="hexo"><p></p><p></p><h1>Hexo 初始化配置</h1><br>第一个命令，如果失败了就再输入一次，第二个命令表示安装 hexo 部署到 git page 的 deployer<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure><br>Hexo 安装完成后，将会在指定文件夹中新建所需要的文件<p></p><p></p><h1>本地查看效果</h1><br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br><span class="line">hexo server</span><br></pre></td></tr></table></figure><br>执行完即可登录 <a href="http://localhost:4000/">http://localhost:4000/</a> 查看效果<p></p><p></p><h1>将博客部署到 Github Pages 上</h1><br>未完待续<p></p>]]></content>
+      
+      
       <categories>
-        <category>技术</category>
+          
+          <category> 技术 </category>
+          
       </categories>
-      <tags>
-        <tag>Github</tag>
-        <tag>Hexo</tag>
-        <tag>博客</tag>
-        <tag>Github Pages</tag>
-      </tags>
-  </entry>
+      
+      
+        <tags>
+            
+            <tag> Github </tag>
+            
+            <tag> Hexo </tag>
+            
+            <tag> 博客 </tag>
+            
+            <tag> Github Pages </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/undefined/4a17b156.html"/>
+      <url>/undefined/4a17b156.html</url>
+      
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+  
+  
 </search>
