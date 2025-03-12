@@ -3,11 +3,11 @@
   <title>轻语のblog</title>
   <icon>https://www.gravatar.com/avatar/fd350a9ccda81239c129ad339e73a5ba</icon>
   <subtitle>生活明朗 万物可爱</subtitle>
-  <link href="https://qingyukb.github.io/atom.xml" rel="self"/>
+  <link href="https://blog.qyus.cn/atom.xml" rel="self"/>
   
-  <link href="https://qingyukb.github.io/"/>
-  <updated>2025-03-11T07:39:11.264Z</updated>
-  <id>https://qingyukb.github.io/</id>
+  <link href="https://blog.qyus.cn/"/>
+  <updated>2025-03-11T07:39:42.641Z</updated>
+  <id>https://blog.qyus.cn/</id>
   
   <author>
     <name>轻语</name>
@@ -18,10 +18,10 @@
   
   <entry>
     <title>VSCode报错此系统上禁止运行脚本</title>
-    <link href="https://qingyukb.github.io/undefined/8d48c6a1.html"/>
-    <id>https://qingyukb.github.io/undefined/8d48c6a1.html</id>
+    <link href="https://blog.qyus.cn/undefined/8d48c6a1.html"/>
+    <id>https://blog.qyus.cn/undefined/8d48c6a1.html</id>
     <published>2025-03-11T07:32:52.000Z</published>
-    <updated>2025-03-11T07:39:11.264Z</updated>
+    <updated>2025-03-11T07:39:42.641Z</updated>
     
     <content type="html"><![CDATA[<h2 id="📝-问题描述"><a href="#📝-问题描述" class="headerlink" title="📝 问题描述"></a>📝 问题描述</h2><p>在使用 VSCode 时可能会遇到”此系统上禁止运行脚本”的错误提示，这是由于 Windows 默认的 PowerShell 执行策略限制导致的。</p><h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>可以通过 PowerShell 命令修改执行策略:<br> powershell<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Set-ExecutionPolicy RemoteSigned</span><br></pre></td></tr></table></figure></p><h3 id="验证设置"><a href="#验证设置" class="headerlink" title="验证设置"></a>验证设置</h3><p>设置完成后，重启 VSCode 验证问题是否解决。</p><hr><h2 id="📚-总结"><a href="#📚-总结" class="headerlink" title="📚 总结"></a>📚 总结</h2><p>通过修改 Windows PowerShell 的执行策略，我们解决了 VSCode 无法运行脚本的问题。这个设置不会影响系统安全性，但可以让开发工作更顺畅。</p>]]></content>
     
@@ -33,17 +33,17 @@
     
     
     
-    <category term="分享" scheme="https://qingyukb.github.io/categories/%E5%88%86%E4%BA%AB/"/>
+    <category term="分享" scheme="https://blog.qyus.cn/categories/%E5%88%86%E4%BA%AB/"/>
     
     
-    <category term="vscode" scheme="https://qingyukb.github.io/tags/vscode/"/>
+    <category term="vscode" scheme="https://blog.qyus.cn/tags/vscode/"/>
     
   </entry>
   
   <entry>
     <title>最好用的Markdown编辑器-Typora</title>
-    <link href="https://qingyukb.github.io/undefined/c6c552a3.html"/>
-    <id>https://qingyukb.github.io/undefined/c6c552a3.html</id>
+    <link href="https://blog.qyus.cn/undefined/c6c552a3.html"/>
+    <id>https://blog.qyus.cn/undefined/c6c552a3.html</id>
     <published>2025-03-11T07:20:20.000Z</published>
     <updated>2025-03-11T07:29:40.589Z</updated>
     
@@ -57,23 +57,23 @@
     
     
     
-    <category term="分享" scheme="https://qingyukb.github.io/categories/%E5%88%86%E4%BA%AB/"/>
+    <category term="分享" scheme="https://blog.qyus.cn/categories/%E5%88%86%E4%BA%AB/"/>
     
     
-    <category term="编辑器" scheme="https://qingyukb.github.io/tags/%E7%BC%96%E8%BE%91%E5%99%A8/"/>
+    <category term="Hexo" scheme="https://blog.qyus.cn/tags/Hexo/"/>
     
-    <category term="Hexo" scheme="https://qingyukb.github.io/tags/Hexo/"/>
+    <category term="编辑器" scheme="https://blog.qyus.cn/tags/%E7%BC%96%E8%BE%91%E5%99%A8/"/>
     
-    <category term="Typora" scheme="https://qingyukb.github.io/tags/Typora/"/>
+    <category term="Typora" scheme="https://blog.qyus.cn/tags/Typora/"/>
     
-    <category term="Markdown" scheme="https://qingyukb.github.io/tags/Markdown/"/>
+    <category term="Markdown" scheme="https://blog.qyus.cn/tags/Markdown/"/>
     
   </entry>
   
   <entry>
     <title>使用 Github Pages 和 Hexo 搭建自己的独立博客</title>
-    <link href="https://qingyukb.github.io/undefined/7a776471.html"/>
-    <id>https://qingyukb.github.io/undefined/7a776471.html</id>
+    <link href="https://blog.qyus.cn/undefined/7a776471.html"/>
+    <id>https://blog.qyus.cn/undefined/7a776471.html</id>
     <published>2024-12-24T05:56:45.000Z</published>
     <updated>2025-03-11T07:03:13.731Z</updated>
     
@@ -89,23 +89,23 @@
     
     
     
-    <category term="技术" scheme="https://qingyukb.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    <category term="技术" scheme="https://blog.qyus.cn/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-    <category term="Hexo" scheme="https://qingyukb.github.io/tags/Hexo/"/>
+    <category term="Github" scheme="https://blog.qyus.cn/tags/Github/"/>
     
-    <category term="Github" scheme="https://qingyukb.github.io/tags/Github/"/>
+    <category term="Hexo" scheme="https://blog.qyus.cn/tags/Hexo/"/>
     
-    <category term="博客" scheme="https://qingyukb.github.io/tags/%E5%8D%9A%E5%AE%A2/"/>
+    <category term="博客" scheme="https://blog.qyus.cn/tags/%E5%8D%9A%E5%AE%A2/"/>
     
-    <category term="Github Pages" scheme="https://qingyukb.github.io/tags/Github-Pages/"/>
+    <category term="Github Pages" scheme="https://blog.qyus.cn/tags/Github-Pages/"/>
     
   </entry>
   
   <entry>
     <title>Hello World</title>
-    <link href="https://qingyukb.github.io/undefined/4a17b156.html"/>
-    <id>https://qingyukb.github.io/undefined/4a17b156.html</id>
+    <link href="https://blog.qyus.cn/undefined/4a17b156.html"/>
+    <id>https://blog.qyus.cn/undefined/4a17b156.html</id>
     <published>2024-12-24T05:11:55.347Z</published>
     <updated>2024-12-24T11:57:48.423Z</updated>
     
