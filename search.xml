@@ -15,6 +15,22 @@
 ]]></content>
   </entry>
   <entry>
+    <title>VSCode报错此系统上禁止运行脚本</title>
+    <url>/undefined/8d48c6a1.html</url>
+    <content><![CDATA[<h2 id="📝-问题描述"><a href="#📝-问题描述" class="headerlink" title="📝 问题描述"></a>📝 问题描述</h2><p>在使用 VSCode 时可能会遇到”此系统上禁止运行脚本”的错误提示，这是由于 Windows 默认的 PowerShell 执行策略限制导致的。</p>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>可以通过 PowerShell 命令修改执行策略:<br> powershell<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Set-ExecutionPolicy RemoteSigned</span><br></pre></td></tr></table></figure></p>
+<h3 id="验证设置"><a href="#验证设置" class="headerlink" title="验证设置"></a>验证设置</h3><p>设置完成后，重启 VSCode 验证问题是否解决。</p>
+<hr>
+<h2 id="📚-总结"><a href="#📚-总结" class="headerlink" title="📚 总结"></a>📚 总结</h2><p>通过修改 Windows PowerShell 的执行策略，我们解决了 VSCode 无法运行脚本的问题。这个设置不会影响系统安全性，但可以让开发工作更顺畅。</p>
+]]></content>
+      <categories>
+        <category>分享</category>
+      </categories>
+      <tags>
+        <tag>vscode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>最好用的Markdown编辑器-Typora</title>
     <url>/undefined/c6c552a3.html</url>
     <content><![CDATA[<h2 id="📝-前言"><a href="#📝-前言" class="headerlink" title="📝 前言"></a>📝 前言</h2><p>接触前端的人一定知道 Markdown，这是一种轻量级标记语言，被广泛用于撰写帮助文档、论坛消息和博客文章。Typora 让 Markdown 写作变得简单优雅。</p>
@@ -146,22 +162,6 @@
         <tag>Github</tag>
         <tag>博客</tag>
         <tag>Github Pages</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>VSCode报错此系统上禁止运行脚本</title>
-    <url>/undefined/8d48c6a1.html</url>
-    <content><![CDATA[<h2 id="📝-问题描述"><a href="#📝-问题描述" class="headerlink" title="📝 问题描述"></a>📝 问题描述</h2><p>在使用 VSCode 时可能会遇到”此系统上禁止运行脚本”的错误提示，这是由于 Windows 默认的 PowerShell 执行策略限制导致的。</p>
-<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>可以通过 PowerShell 命令修改执行策略:<br> powershell<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Set-ExecutionPolicy RemoteSigned</span><br></pre></td></tr></table></figure></p>
-<h3 id="验证设置"><a href="#验证设置" class="headerlink" title="验证设置"></a>验证设置</h3><p>设置完成后，重启 VSCode 验证问题是否解决。</p>
-<hr>
-<h2 id="📚-总结"><a href="#📚-总结" class="headerlink" title="📚 总结"></a>📚 总结</h2><p>通过修改 Windows PowerShell 的执行策略，我们解决了 VSCode 无法运行脚本的问题。这个设置不会影响系统安全性，但可以让开发工作更顺畅。</p>
-]]></content>
-      <categories>
-        <category>分享</category>
-      </categories>
-      <tags>
-        <tag>vscode</tag>
       </tags>
   </entry>
 </search>
