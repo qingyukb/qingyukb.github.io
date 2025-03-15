@@ -60,9 +60,9 @@
     <category term="分享" scheme="https://blog.qyus.cn/categories/%E5%88%86%E4%BA%AB/"/>
     
     
-    <category term="编辑器" scheme="https://blog.qyus.cn/tags/%E7%BC%96%E8%BE%91%E5%99%A8/"/>
-    
     <category term="Hexo" scheme="https://blog.qyus.cn/tags/Hexo/"/>
+    
+    <category term="编辑器" scheme="https://blog.qyus.cn/tags/%E7%BC%96%E8%BE%91%E5%99%A8/"/>
     
     <category term="Typora" scheme="https://blog.qyus.cn/tags/Typora/"/>
     
@@ -92,9 +92,9 @@
     <category term="技术" scheme="https://blog.qyus.cn/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-    <category term="Hexo" scheme="https://blog.qyus.cn/tags/Hexo/"/>
-    
     <category term="Github" scheme="https://blog.qyus.cn/tags/Github/"/>
+    
+    <category term="Hexo" scheme="https://blog.qyus.cn/tags/Hexo/"/>
     
     <category term="博客" scheme="https://blog.qyus.cn/tags/%E5%8D%9A%E5%AE%A2/"/>
     
