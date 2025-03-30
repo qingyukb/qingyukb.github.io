@@ -1,19 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>VSCode报错此系统上禁止运行脚本</title>
-    <url>/undefined/8d48c6a1.html</url>
-    <content><![CDATA[<h2 id="📝-问题描述"><a href="#📝-问题描述" class="headerlink" title="📝 问题描述"></a>📝 问题描述</h2><p>在使用 VSCode 时可能会遇到”此系统上禁止运行脚本”的错误提示，这是由于 Windows 默认的 PowerShell 执行策略限制导致的。</p>
-<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>可以通过 PowerShell 命令修改执行策略:<br> powershell<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Set-ExecutionPolicy RemoteSigned</span><br></pre></td></tr></table></figure></p>
-<h3 id="验证设置"><a href="#验证设置" class="headerlink" title="验证设置"></a>验证设置</h3><p>设置完成后，重启 VSCode 验证问题是否解决。</p>
+    <title>hexo利用hexo-abbrlink插件生成永久链接</title>
+    <url>/undefined/4512133.html</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><ul>
+<li>Hexo默认的静态URL格式是 <code>:year/:month/:day/:title</code> ，即按年、月、日、标题的形式生成固定链接<ul>
+<li>例如： <code>http://www.xxx.com/2022/11/08/文章标题</code></li>
+<li>默认URL的格式会产生很多斜杠，百度蜘蛛在抓取网页时会根据网页权重抓取网页，比如最先抓取的首页（一般都是自己的域名，比较简短），因此在链接里不宜出现过多的斜杠，最好不要超过两个</li>
+<li>还有一个问题：如果文章的标题使用了中文，经过转码后，URL会变得特别长，在最后我会贴上对比图。</li>
+</ul>
+</li>
+<li>使用 <code>hexo-abbrlink</code> 插件便可解决以上出现的问题，以往修改标题会导致原始链接失效，使用这个插件后只要不更改文章中的abbrlink值，文章的链接就会是持久的</li>
+</ul>
 <hr>
-<h2 id="📚-总结"><a href="#📚-总结" class="headerlink" title="📚 总结"></a>📚 总结</h2><p>通过修改 Windows PowerShell 的执行策略，我们解决了 VSCode 无法运行脚本的问题。这个设置不会影响系统安全性，但可以让开发工作更顺畅。</p>
+<h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><h3 id="1、安装插件"><a href="#1、安装插件" class="headerlink" title="1、安装插件"></a>1、安装插件</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">javanpm install hexo-abbrlink --save</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>具体插件链接： <a href="https://github.com/Rozbo/hexo-abbrlink">hexo-abbrlink</a></p>
+</blockquote>
+<h3 id="2、配置"><a href="#2、配置" class="headerlink" title="2、配置"></a>2、配置</h3><p>修改 <code>_config.yml</code> 配置文件</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">java## permalink: :year/:month/:day/:title/</span><br><span class="line"></span><br><span class="line">permalink: posts/:abbrlink.html  ## 或 :/abbrlink/ （此处可自定义<span class="string">&#x27;posts&#x27;</span>处，如：posts:year/:abbrlink.html 或 :abbrlink.html）</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：如果使用”:/abbrlink/“，abbrlink后须带”/“，否则点击链接不会跳转到文章页、而是会触发浏览器下载页面代码操作或跳转到空白链接页面</p>
+</blockquote>
+<p>在 <code>_config.yml</code> 配置文件下增加以下配置<br>如果你是 <code>butterfly</code> 主题，应该都有自己创建了一个主题配置的yml（我的是 <code>_config.butterfly.yml</code> ），以下的配置放在自定义的主题配置的yml文件中也是可以的</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">java## abbrlink config</span><br><span class="line"></span><br><span class="line">abbrlink:</span><br><span class="line"></span><br><span class="line">  alg: crc32      #support <span class="title function_">crc16</span><span class="params">(<span class="keyword">default</span>)</span> and crc32 进制</span><br><span class="line"></span><br><span class="line">  rep: hex        #support <span class="title function_">dec</span><span class="params">(<span class="keyword">default</span>)</span> and hex  算法</span><br><span class="line"></span><br><span class="line">  drafts: <span class="literal">false</span>   #(<span class="literal">true</span>)Process draft,(<span class="literal">false</span>)Do not process draft. <span class="literal">false</span>(<span class="keyword">default</span>) </span><br><span class="line"></span><br><span class="line">  ## Generate categories from directory-tree</span><br><span class="line"></span><br><span class="line">  ## depth: the max_depth of directory-tree you want to generate, should &gt; <span class="number">0</span></span><br><span class="line"></span><br><span class="line">  auto_category:</span><br><span class="line"></span><br><span class="line">     enable: <span class="literal">true</span>  #<span class="literal">true</span>(<span class="keyword">default</span>)</span><br><span class="line"></span><br><span class="line">     depth:        #<span class="number">3</span>(<span class="keyword">default</span>)</span><br><span class="line"></span><br><span class="line">     over_write: <span class="literal">false</span> </span><br><span class="line"></span><br><span class="line">  auto_title: <span class="literal">false</span> #enable auto title, it can auto fill the title by path</span><br><span class="line"></span><br><span class="line">  auto_date: <span class="literal">false</span> #enable auto date, it can auto fill the date by time today</span><br><span class="line"></span><br><span class="line">  force: <span class="literal">false</span> #enable force mode,in <span class="built_in">this</span> mode, the plugin will ignore the cache, and calc the abbrlink <span class="keyword">for</span> every post even it already had abbrlink.</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>alg</code>: 算法(目前支持 <code>crc16</code> 和 <code>crc32</code> 算法，默认值是 <code>crc16</code> )</li>
+<li><code>rep</code>: 形式(生成的链接可以是十六进制格式也可以是十进制格式，默认值是十进制格式)</li>
+</ul>
+<h3 id="3、示例"><a href="#3、示例" class="headerlink" title="3、示例"></a>3、示例</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line">htmlcrc16 &amp; hex</span><br><span class="line"></span><br><span class="line">https://test.com/posts/55c6.html</span><br><span class="line"></span><br><span class="line">crc16 &amp; dec</span><br><span class="line"></span><br><span class="line">https://test.com/posts/43212.html</span><br><span class="line"></span><br><span class="line">crc32 &amp; hex</span><br><span class="line"></span><br><span class="line">https://test.com/posts/6ec16a2c.html</span><br><span class="line"></span><br><span class="line">crc32 &amp; dec</span><br><span class="line"></span><br><span class="line">https://test.com/posts/1521457752.html</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>更多配置可查看具体插件链接： <a href="https://github.com/Rozbo/hexo-abbrlink">hexo-abbrlink</a></p>
+</blockquote>
+<hr>
+<h2 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h2><p>使用插件生成的URL</p>
+<p><a href=""><img src="/img/lianjie.png" alt="pic_2"></a></p>
+<p>插件生成的URL会更简洁明了</p>
 ]]></content>
       <categories>
         <category>分享</category>
       </categories>
       <tags>
-        <tag>vscode</tag>
+        <tag>Hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -282,8 +310,8 @@
         <category>技术</category>
       </categories>
       <tags>
-        <tag>编辑器</tag>
         <tag>Hexo</tag>
+        <tag>编辑器</tag>
         <tag>Typora</tag>
         <tag>Markdown</tag>
       </tags>
@@ -416,10 +444,26 @@
         <category>分享</category>
       </categories>
       <tags>
-        <tag>编辑器</tag>
         <tag>Hexo</tag>
+        <tag>编辑器</tag>
         <tag>Typora</tag>
         <tag>Markdown</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>VSCode报错此系统上禁止运行脚本</title>
+    <url>/undefined/8d48c6a1.html</url>
+    <content><![CDATA[<h2 id="📝-问题描述"><a href="#📝-问题描述" class="headerlink" title="📝 问题描述"></a>📝 问题描述</h2><p>在使用 VSCode 时可能会遇到”此系统上禁止运行脚本”的错误提示，这是由于 Windows 默认的 PowerShell 执行策略限制导致的。</p>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>可以通过 PowerShell 命令修改执行策略:<br> powershell<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Set-ExecutionPolicy RemoteSigned</span><br></pre></td></tr></table></figure></p>
+<h3 id="验证设置"><a href="#验证设置" class="headerlink" title="验证设置"></a>验证设置</h3><p>设置完成后，重启 VSCode 验证问题是否解决。</p>
+<hr>
+<h2 id="📚-总结"><a href="#📚-总结" class="headerlink" title="📚 总结"></a>📚 总结</h2><p>通过修改 Windows PowerShell 的执行策略，我们解决了 VSCode 无法运行脚本的问题。这个设置不会影响系统安全性，但可以让开发工作更顺畅。</p>
+]]></content>
+      <categories>
+        <category>分享</category>
+      </categories>
+      <tags>
+        <tag>vscode</tag>
       </tags>
   </entry>
 </search>
