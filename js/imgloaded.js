@@ -59,17 +59,17 @@
   
     const ldconfig = {
       light: {
-        smallSrc: 'https://app.zichen.zone/api/acg/api.php', //浅色模式 小图链接 尽可能配置小于100k的图片 
-        largeSrc: 'https://app.zichen.zone/api/acg/api.php', //浅色模式 大图链接 最终显示的图片
-        mobileSmallSrc: 'https://app.zichen.zone/api/acg/api.php', //手机端浅色小图链接 尽可能配置小于100k的图片
-        mobileLargeSrc: 'https://app.zichen.zone/api/acg/api.php', //手机端浅色大图链接 最终显示的图片
+        smallSrc: 'https://t.alcy.cc/ycy', //浅色模式 小图链接 尽可能配置小于100k的图片 
+        largeSrc: 'https://t.alcy.cc/ycy', //浅色模式 大图链接 最终显示的图片
+        mobileSmallSrc: 'https://t.alcy.cc/ycy', //手机端浅色小图链接 尽可能配置小于100k的图片
+        mobileLargeSrc: 'https://t.alcy.cc/ycy', //手机端浅色大图链接 最终显示的图片
         enableRoutes: ['/'],
         },
       dark: {
-        smallSrc: 'https://app.zichen.zone/api/acg/api.php', //深色模式 小图链接 尽可能配置小于100k的图片 
-        largeSrc: 'https://app.zichen.zone/api/acg/api.php', //深色模式 大图链接 最终显示的图片
-        mobileSmallSrc: 'https://app.zichen.zone/api/acg/api.php', //手机端深色模式小图链接 尽可能配置小于100k的图片
-        mobileLargeSrc: 'https://app.zichen.zone/api/acg/api.php', //手机端深色大图链接 最终显示的图片
+        smallSrc: 'https://t.alcy.cc/ycy', //深色模式 小图链接 尽可能配置小于100k的图片 
+        largeSrc: 'https://t.alcy.cc/ycy', //深色模式 大图链接 最终显示的图片
+        mobileSmallSrc: 'https://t.alcy.cc/ycy', //手机端深色模式小图链接 尽可能配置小于100k的图片
+        mobileLargeSrc: 'https://t.alcy.cc/ycy', //手机端深色大图链接 最终显示的图片
         enableRoutes: ['/'],
         },
       };
