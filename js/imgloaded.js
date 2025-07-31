@@ -59,17 +59,17 @@
   
     const ldconfig = {
       light: {
-        smallSrc: 'https://t.alcy.cc/ycy', //浅色模式 小图链接 尽可能配置小于100k的图片 
-        largeSrc: 'https://t.alcy.cc/ycy', //浅色模式 大图链接 最终显示的图片
-        mobileSmallSrc: 'https://t.alcy.cc/ycy', //手机端浅色小图链接 尽可能配置小于100k的图片
-        mobileLargeSrc: 'https://t.alcy.cc/ycy', //手机端浅色大图链接 最终显示的图片
+        smallSrc: '/img/pcbj.webp', //浅色模式 小图链接 尽可能配置小于100k的图片 
+        largeSrc: '/img/pcbj.webp', //浅色模式 大图链接 最终显示的图片
+        mobileSmallSrc: '/img/pebj.webp', //手机端浅色小图链接 尽可能配置小于100k的图片
+        mobileLargeSrc: '/img/pebj.webp', //手机端浅色大图链接 最终显示的图片
         enableRoutes: ['/'],
         },
       dark: {
-        smallSrc: '', //深色模式 小图链接 尽可能配置小于100k的图片 
-        largeSrc: '', //深色模式 大图链接 最终显示的图片
-        mobileSmallSrc: '', //手机端深色模式小图链接 尽可能配置小于100k的图片
-        mobileLargeSrc: '', //手机端深色大图链接 最终显示的图片
+        smallSrc: '/img/pcbj2.webp', //深色模式 小图链接 尽可能配置小于100k的图片 
+        largeSrc: '/img/pcbj2.webp', //深色模式 大图链接 最终显示的图片
+        mobileSmallSrc: '/img/pebj.webp', //手机端深色模式小图链接 尽可能配置小于100k的图片
+        mobileLargeSrc: '/img/pebj.webp', //手机端深色大图链接 最终显示的图片
         enableRoutes: ['/'],
         },
       };
