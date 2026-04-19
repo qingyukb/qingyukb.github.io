@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Sitemap: https://blog.qyus.cn/sitemap.xml
+
+Disallow: /js/
+Disallow: /css/
+Disallow: /img/
