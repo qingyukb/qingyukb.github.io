@@ -49,11 +49,40 @@
   /* 小图锯齿多，增加高斯模糊 */
   filter: blur(50px);
 }
-/* 字体css */
-@font-face{
-  font-family: 'ChillRoundFBold'; 
-  <!-- 其中HuangkaihuaLawyerFont是引入的字体的名称，可以自定义 -->
+/* 正文字体（完整字体文件） */
+@font-face {
+  font-family: 'ChillRoundFBold';
+  font-style: normal;
+  font-weight: 400;
   font-display: swap;
-  src: url('/img/ChillRoundFRegular.woff2') format("truetype");
-  <!-- url中填写自己的字体地址，我使用的是本地文件夹所以用的是相对路径，如果是外部引用的话在其中写入链接地址就好了 -->
+  src: url('/img/ChillRoundFRegular.woff2') format('woff2');
+}
+
+/* 站点标题字体（子集化，仅包含标题用字与 ASCII） */
+@font-face {
+  font-family: 'ChillRoundF-SiteTitle';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/img/ChillRoundF-SiteTitle.woff2') format('woff2');
+}
+/* 作者卡社交图标：三个按钮保持同排，避免窄侧栏出现 2+1 换行 */
+#aside-content > .card-widget.card-info .author-info__bottom-group {
+  gap: 10px;
+}
+
+#aside-content > .card-widget.card-info .author-info__bottom-group-left {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+#aside-content > .card-widget.card-info .card-info-social-icons {
+  flex: 0 0 auto;
+  flex-wrap: nowrap;
+  gap: 7px;
+}
+
+#aside-content > .card-widget.card-info .card-info-social-icons .social-icon {
+  flex: 0 0 auto;
+  margin: 0;
 }

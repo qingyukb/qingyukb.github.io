@@ -4,6 +4,12 @@ var anzhiyu_musicFirst = false;
 var anzhiyu_keyboard = null;
 // 音乐播放状态
 var anzhiyu_musicPlaying = false;
+// 首次点击时才加载 APlayer/Meting
+var anzhiyu_musicLoading = false;
+var anzhiyu_musicLoadPromise = null;
+var anzhiyuUniverseLoadPromise = null;
+var anzhiyuUniverseLoaded = false;
+var fancyboxLoadPromise = null;
 var $bodyWrap = document.getElementById("body-wrap");
 var anzhiyu_intype = false;
 var anzhiyu_keyUpEvent_timeoutId = null;
@@ -176,6 +182,14 @@ document.addEventListener("DOMContentLoaded", function () {
     $nav.classList.toggle("hide-menu", hideMenuIndex);
   };
 
+  // 初始化右键菜单文本
+  const initRightMenu = () => {
+    $rightMenu = document.getElementById("rightMenu");
+    const mode = document.documentElement.getAttribute('data-theme');
+    const menuDarkmodeText = $rightMenu.querySelector(".menu-darkmode-text");
+    menuDarkmodeText.textContent = mode === "light" ? "深色模式" : "浅色模式";
+  }
+  
   // 初始化header
   const initAdjust = () => {
     adjustMenu(true);
@@ -362,6 +376,88 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
+
+  /**
+   * Room style (only needed by room pages)
+   */
+  const loadRoomStyle = () => {
+    const roomPage = document.getElementById("room_page");
+    const roomCSS = document.getElementById("room-page-css");
+
+    if (!roomPage) {
+      roomCSS && roomCSS.remove();
+      return;
+    }
+
+    const source = GLOBAL_CONFIG.source && GLOBAL_CONFIG.source.room;
+    if (roomCSS || !source) return;
+
+    getCSS(source, "room-page-css").catch(error => {
+      console.error("Room styles failed to load:", error);
+    });
+  };
+
+  /**
+   * Fancybox lazy loading
+   */
+  const loadFancybox = () => {
+    if (window.fancyboxRun) return Promise.resolve();
+    if (fancyboxLoadPromise) return fancyboxLoadPromise;
+
+    const source = GLOBAL_CONFIG.source && GLOBAL_CONFIG.source.fancybox;
+    if (!source || !source.js || !source.css) {
+      return Promise.reject(new Error("Fancybox source is not configured"));
+    }
+
+    const cssLoaded = document.getElementById("fancybox-css")
+      ? Promise.resolve()
+      : getCSS(source.css, "fancybox-css");
+    const jsLoaded = window.Fancybox ? Promise.resolve() : getScript(source.js);
+
+    fancyboxLoadPromise = Promise.all([cssLoaded, jsLoaded])
+      .then(() => {
+        if (window.fancyboxRun) return;
+        Fancybox.bind("[data-fancybox]", {
+          Hash: false,
+          Thumbs: {
+            autoStart: false,
+          },
+        });
+        window.fancyboxRun = true;
+      })
+      .catch(error => {
+        fancyboxLoadPromise = null;
+        throw error;
+      });
+
+    return fancyboxLoadPromise;
+  };
+
+  const initFancyboxLazyLoad = () => {
+    if (window.anzhiyuFancyboxLazyBound) return;
+    window.anzhiyuFancyboxLazyBound = true;
+
+    document.addEventListener(
+      "click",
+      event => {
+        if (window.fancyboxRun) return;
+
+        const target = event.target instanceof Element ? event.target : event.target.parentElement;
+        const trigger = target && target.closest("[data-fancybox]");
+        if (!trigger) return;
+
+        event.preventDefault();
+        loadFancybox()
+          .then(() => trigger.click())
+          .catch(error => {
+            console.error("Fancybox failed to load:", error);
+            const anchor = trigger.closest("a");
+            if (anchor) window.location.assign(anchor.href);
+          });
+      },
+      true
+    );
+  };
 
   /**
    * Lightbox
@@ -770,7 +866,26 @@ document.addEventListener("DOMContentLoaded", function () {
     anzhiyu.addEventListenerPjax(window, "scroll", tocScrollFn, { passive: true });
   };
 
+  const loadUniverse = () => {
+    if (document.documentElement.getAttribute("data-theme") !== "dark" || anzhiyuUniverseLoaded) return;
+    if (anzhiyuUniverseLoadPromise) return;
+
+    const source = GLOBAL_CONFIG.source && GLOBAL_CONFIG.source.universe;
+    if (!source) return;
+
+    anzhiyuUniverseLoadPromise = getScript(source)
+      .then(() => {
+        anzhiyuUniverseLoaded = true;
+      })
+      .catch(error => {
+        anzhiyuUniverseLoadPromise = null;
+        console.error("Universe effect failed to load:", error);
+      });
+  };
+
   const handleThemeChange = mode => {
+    mode === "dark" && loadUniverse();
+
     const globalFn = window.globalFn || {};
     const themeChange = globalFn.themeChange || {};
     if (!themeChange) {
@@ -1218,7 +1333,8 @@ document.addEventListener("DOMContentLoaded", function () {
   //封面纯色
   const coverColor = async () => {
     const root = document.querySelector(":root");
-    const path = document.getElementById("post-top-bg")?.src;
+    const bg = document.getElementById("post-top-bg")
+    const path = bg?.src;
     if (!path) {
       // 非文章情况，直接设置不需要请求了
       root.style.setProperty("--anzhiyu-bar-background", "var(--anzhiyu-meta-theme-color)");
@@ -1267,6 +1383,39 @@ document.addEventListener("DOMContentLoaded", function () {
             getComputedStyle(document.documentElement).getPropertyValue("--anzhiyu-main") + "dd"
           );
         }
+      } else if (GLOBAL_CONFIG.mainTone.mode == "colorthief") {
+        const colorThief = new ColorThief();
+        bg.crossOrigin = "Anonymous";
+        const getColorFromImage = () => {
+          const rgb = colorThief.getColor(bg);
+          let value = colorHex(`rgb(${rgb[0]}, ${rgb[1]}, ${rgb[2]})`);
+          if (getContrastYIQ(value) === "light") {
+            value = LightenDarkenColor(value, -40);
+          } else {
+            value = LightenDarkenColor(value, 40);
+          }
+          root.style.setProperty("--anzhiyu-bar-background", value);
+          requestAnimationFrame(() => {
+            anzhiyu.initThemeColor();
+          });
+          if (GLOBAL_CONFIG.mainTone.cover_change) {
+            document.documentElement.style.setProperty("--anzhiyu-main", value);
+            document.documentElement.style.setProperty(
+              "--anzhiyu-theme-op",
+              getComputedStyle(document.documentElement).getPropertyValue(
+                "--anzhiyu-main"
+              ) + "23"
+            );
+            document.documentElement.style.setProperty(
+              "--anzhiyu-theme-op-deep",
+              getComputedStyle(document.documentElement).getPropertyValue(
+                "--anzhiyu-main"
+              ) + "dd"
+            );
+          }
+          bg.removeEventListener("load", getColorFromImage);
+        };
+        bg.addEventListener("load", getColorFromImage);
       } else {
         const fallbackValue = "var(--anzhiyu-theme)";
         let fetchPath = "";
@@ -1445,32 +1594,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       });
     }
-  };
-
-  // 监听nav是否被其他音频暂停⏸️
-  const listenNavMusicPause = function () {
-    const timer = setInterval(() => {
-      if (navMusicEl && navMusicEl.querySelector("#nav-music meting-js").aplayer) {
-        clearInterval(timer);
-        let msgPlay = '<i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span>';
-        let msgPause = '<i class="anzhiyufont anzhiyu-icon-pause"></i><span>暂停音乐</span>';
-        navMusicEl.querySelector("#nav-music meting-js").aplayer.on("pause", function () {
-          navMusicEl.classList.remove("playing");
-          document.getElementById("menu-music-toggle").innerHTML = msgPlay;
-          document.getElementById("nav-music-hoverTips").innerHTML = "音乐已暂停";
-          document.querySelector("#consoleMusic").classList.remove("on");
-          anzhiyu_musicPlaying = false;
-          navMusicEl.classList.remove("stretch");
-        });
-        navMusicEl.querySelector("#nav-music meting-js").aplayer.on("play", function () {
-          navMusicEl.classList.add("playing");
-          document.getElementById("menu-music-toggle").innerHTML = msgPause;
-          document.querySelector("#consoleMusic").classList.add("on");
-          anzhiyu_musicPlaying = true;
-          // navMusicEl.classList.add("stretch");
-        });
-      }
-    }, 16);
   };
 
   // 开发者工具键盘监听
@@ -1706,7 +1829,6 @@ document.addEventListener("DOMContentLoaded", function () {
     clickFnOfSubMenu();
     GLOBAL_CONFIG.islazyload && lazyloadImg();
     GLOBAL_CONFIG.copyright !== undefined && addCopyright();
-    GLOBAL_CONFIG.navMusic && listenNavMusicPause();
     if (GLOBAL_CONFIG.shortcutKey && document.getElementById("consoleKeyboard")) {
       localStorage.setItem("keyboardToggle", "true");
       document.getElementById("consoleKeyboard").classList.add("on");
@@ -1719,6 +1841,11 @@ document.addEventListener("DOMContentLoaded", function () {
         e.matches ? handleThemeChange("dark") : handleThemeChange("light");
       });
     }
+    // 深色粒子与 room 页面样式
+    loadUniverse();
+    loadRoomStyle();
+    GLOBAL_CONFIG.lightbox === "fancybox" && initFancyboxLazyLoad();
+
     // 欢迎语
     GLOBAL_CONFIG.greetingBox && greetingInit();
     // 51la统计&灵雀统计
@@ -1726,6 +1853,9 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   window.refreshFn = function () {
+    loadRoomStyle();
+    loadUniverse();
+
     initAdjust();
     themeColorMeta = document.querySelector('meta[name="theme-color"]');
     pageHeaderEl = document.getElementById("page-header");
@@ -1808,6 +1938,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 200);
   };
 
+  initRightMenu();
   refreshFn();
   unRefreshFn();
 });

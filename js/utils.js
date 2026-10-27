@@ -208,15 +208,6 @@ const anzhiyu = {
         }
       });
 
-      if (!window.fancyboxRun) {
-        Fancybox.bind("[data-fancybox]", {
-          Hash: false,
-          Thumbs: {
-            autoStart: false,
-          },
-        });
-        window.fancyboxRun = true;
-      }
     }
   },
 
@@ -643,31 +634,74 @@ const anzhiyu = {
     if (!config[configKey]) return defaultValue;
     return config[configKey];
   },
-  //切换音乐播放状态
-  musicToggle: function (changePaly = true) {
-    if (!anzhiyu_musicFirst) {
-      anzhiyu.musicBindEvent();
-      anzhiyu_musicFirst = true;
-    }
-    let msgPlay = '<i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span>';
-    let msgPause = '<i class="anzhiyufont anzhiyu-icon-pause"></i><span>暂停音乐</span>';
-    if (anzhiyu_musicPlaying) {
-      navMusicEl.classList.remove("playing");
-      document.getElementById("menu-music-toggle").innerHTML = msgPlay;
-      document.getElementById("nav-music-hoverTips").innerHTML = "音乐已暂停";
-      document.querySelector("#consoleMusic").classList.remove("on");
-      anzhiyu_musicPlaying = false;
-      navMusicEl.classList.remove("stretch");
-    } else {
-      navMusicEl.classList.add("playing");
-      document.getElementById("menu-music-toggle").innerHTML = msgPause;
-      document.querySelector("#consoleMusic").classList.add("on");
-      anzhiyu_musicPlaying = true;
-      navMusicEl.classList.add("stretch");
-    }
-    if (changePaly) document.querySelector("#nav-music meting-js").aplayer.toggle();
-    rm && rm.hideRightMenu();
+  // 加载音乐播放器（首次点击时执行）
+  loadMusicPlayer: function () {
+    const navMusic = document.getElementById("nav-music");
+    const meting = navMusic && navMusic.querySelector("meting-js");
+    if (!meting) return Promise.reject(new Error("未找到 nav-music 播放器节点"));
+    if (meting.aplayer) return Promise.resolve(meting.aplayer);
+    if (anzhiyu_musicLoadPromise) return anzhiyu_musicLoadPromise;
+
+    const { aplayerCss, aplayerJs, metingJs } = navMusic.dataset;
+    anzhiyu_musicLoadPromise = (async () => {
+      const cssReady = aplayerCss ? getCSS(aplayerCss).catch(error => console.warn("APlayer 样式加载失败", error)) : Promise.resolve();
+      const aplayerReady = window.APlayer ? Promise.resolve() : getScript(aplayerJs);
+      await Promise.all([cssReady, aplayerReady]);
+
+      if (!window.customElements || !window.customElements.get("meting-js")) {
+        await getScript(metingJs);
+      }
+
+      const deadline = Date.now() + 30000;
+      while (!meting.aplayer && Date.now() < deadline) {
+        await new Promise(resolve => setTimeout(resolve, 100));
+      }
+      if (!meting.aplayer) throw new Error("音乐播放器初始化超时");
+      return meting.aplayer;
+    })().catch(error => {
+      anzhiyu_musicLoadPromise = null;
+      throw error;
+    });
+
+    return anzhiyu_musicLoadPromise;
   },
+
+  //切换音乐播放状态
+  musicToggle: async function (changePaly = true) {
+    if (anzhiyu_musicLoading) return;
+    anzhiyu_musicLoading = true;
+    try {
+      const aplayer = await anzhiyu.loadMusicPlayer();
+      if (!anzhiyu_musicFirst) {
+        anzhiyu.musicBindEvent();
+        anzhiyu_musicFirst = true;
+      }
+      let msgPlay = '<i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span>';
+      let msgPause = '<i class="anzhiyufont anzhiyu-icon-pause"></i><span>暂停音乐</span>';
+      if (anzhiyu_musicPlaying) {
+        navMusicEl.classList.remove("playing");
+        document.getElementById("menu-music-toggle").innerHTML = msgPlay;
+        document.getElementById("nav-music-hoverTips").innerHTML = "音乐已暂停";
+        document.querySelector("#consoleMusic").classList.remove("on");
+        anzhiyu_musicPlaying = false;
+        navMusicEl.classList.remove("stretch");
+      } else {
+        navMusicEl.classList.add("playing");
+        document.getElementById("menu-music-toggle").innerHTML = msgPause;
+        document.querySelector("#consoleMusic").classList.add("on");
+        anzhiyu_musicPlaying = true;
+        navMusicEl.classList.add("stretch");
+      }
+      if (changePaly) aplayer.toggle();
+      rm && rm.hideRightMenu();
+    } catch (error) {
+      console.warn("音乐加载失败", error);
+      anzhiyu.snackbarShow("音乐加载失败，请稍后重试");
+    } finally {
+      anzhiyu_musicLoading = false;
+    }
+  },
+
   // 音乐伸缩
   musicTelescopic: function () {
     if (navMusicEl.classList.contains("stretch")) {
@@ -678,15 +712,25 @@ const anzhiyu = {
   },
 
   //音乐上一曲
-  musicSkipBack: function () {
-    navMusicEl.querySelector("meting-js").aplayer.skipBack();
-    rm && rm.hideRightMenu();
+  musicSkipBack: async function () {
+    try {
+      const aplayer = await anzhiyu.loadMusicPlayer();
+      aplayer.skipBack();
+      rm && rm.hideRightMenu();
+    } catch (error) {
+      console.warn("音乐加载失败", error);
+    }
   },
 
   //音乐下一曲
-  musicSkipForward: function () {
-    navMusicEl.querySelector("meting-js").aplayer.skipForward();
-    rm && rm.hideRightMenu();
+  musicSkipForward: async function () {
+    try {
+      const aplayer = await anzhiyu.loadMusicPlayer();
+      aplayer.skipForward();
+      rm && rm.hideRightMenu();
+    } catch (error) {
+      console.warn("音乐加载失败", error);
+    }
   },
 
   //获取音乐中的名称
@@ -996,9 +1040,11 @@ const anzhiyu = {
   // 控制台音乐列表监听
   addEventListenerConsoleMusicList: function () {
     const navMusic = document.getElementById("nav-music");
-    if (!navMusic) return;
+    if (!navMusic || navMusic.dataset.musicListBound === "true") return;
+    navMusic.dataset.musicListBound = "true";
     navMusic.addEventListener("click", e => {
       const aplayerList = navMusic.querySelector(".aplayer-list");
+      if (!aplayerList) return;
       const listBtn = navMusic.querySelector(
         "div.aplayer-info > div.aplayer-controller > div.aplayer-time.aplayer-time-narrow > button.aplayer-icon.aplayer-icon-menu svg"
       );
@@ -1007,17 +1053,30 @@ const anzhiyu = {
       }
     });
   },
-  // 监听按键
+  // 监听按键 - 页码跳转
   toPage: function () {
     var toPageText = document.getElementById("toPageText"),
       toPageButton = document.getElementById("toPageButton"),
       pageNumbers = document.querySelectorAll(".page-number"),
-      lastPageNumber = Number(pageNumbers[pageNumbers.length - 1].innerHTML),
       pageNumber = Number(toPageText.value);
 
+    // 获取最大页码，确保在分页元素不存在或为空时有默认值
+    var lastPageNumber = 1;
+    if (pageNumbers && pageNumbers.length > 0) {
+      // 遍历所有分页数字，找出最大值（避免分页显示不完整导致的问题）
+      pageNumbers.forEach(function (el) {
+        var num = Number(el.textContent);
+        if (!isNaN(num) && num > lastPageNumber) {
+          lastPageNumber = num;
+        }
+      });
+    }
+
     if (!isNaN(pageNumber) && pageNumber >= 1 && Number.isInteger(pageNumber)) {
-      var url = "/page/" + (pageNumber > lastPageNumber ? lastPageNumber : pageNumber) + "/";
-      toPageButton.href = pageNumber === 1 ? "/" : url;
+      // 确保页码不超过最大页码
+      var targetPage = pageNumber > lastPageNumber ? lastPageNumber : pageNumber;
+      var url = "/page/" + targetPage + "/#content-inner";
+      toPageButton.href = targetPage === 1 ? "/" : url;
     } else {
       toPageButton.href = "javascript:void(0);";
     }
@@ -1126,11 +1185,30 @@ const anzhiyu = {
 
   // 音乐绑定事件
   musicBindEvent: function () {
+    const meting = document.querySelector("#nav-music meting-js");
+    const aplayer = meting && meting.aplayer;
+    if (!aplayer || aplayer.__anzhiyuNavBound) return;
+    aplayer.__anzhiyuNavBound = true;
+
     document.querySelector("#nav-music .aplayer-music").addEventListener("click", function () {
       anzhiyu.musicTelescopic();
     });
     document.querySelector("#nav-music .aplayer-button").addEventListener("click", function () {
       anzhiyu.musicToggle(false);
+    });
+    aplayer.on("pause", function () {
+      navMusicEl.classList.remove("playing");
+      document.getElementById("menu-music-toggle").innerHTML = '<i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span>';
+      document.getElementById("nav-music-hoverTips").innerHTML = "音乐已暂停";
+      document.querySelector("#consoleMusic").classList.remove("on");
+      anzhiyu_musicPlaying = false;
+      navMusicEl.classList.remove("stretch");
+    });
+    aplayer.on("play", function () {
+      navMusicEl.classList.add("playing");
+      document.getElementById("menu-music-toggle").innerHTML = '<i class="anzhiyufont anzhiyu-icon-pause"></i><span>暂停音乐</span>';
+      document.querySelector("#consoleMusic").classList.add("on");
+      anzhiyu_musicPlaying = true;
     });
   },
 
@@ -1149,19 +1227,56 @@ const anzhiyu = {
     return isMobile;
   },
 
-  // 创建二维码
+  // 创建二维码（首次打开分享面板时再加载二维码库）
   qrcodeCreate: function () {
-    if (document.getElementById("qrcode")) {
-      document.getElementById("qrcode").innerHTML = "";
-      var qrcode = new QRCode(document.getElementById("qrcode"), {
-        text: window.location.href,
-        width: 250,
-        height: 250,
-        colorDark: "#000",
-        colorLight: "#ffffff",
-        correctLevel: QRCode.CorrectLevel.H,
-      });
+    const qrcodeElement = document.getElementById("qrcode");
+    if (!qrcodeElement) return;
+
+    const createQRCode = async () => {
+      if (qrcodeElement.dataset.anzhiyuQrcodeReady === "true") return;
+      if (qrcodeElement.dataset.anzhiyuQrcodeLoading === "true") return;
+      qrcodeElement.dataset.anzhiyuQrcodeLoading = "true";
+
+      try {
+        if (typeof QRCode !== "function") {
+          if (!window.anzhiyuQrcodeLoadPromise) {
+            window.anzhiyuQrcodeLoadPromise = getScript("https://cdn.cbd.int/qrcodejs@1.0.0/qrcode.min.js").catch(error => {
+              window.anzhiyuQrcodeLoadPromise = null;
+              throw error;
+            });
+          }
+          await window.anzhiyuQrcodeLoadPromise;
+        }
+
+        if (!document.body.contains(qrcodeElement)) return;
+        qrcodeElement.innerHTML = "";
+        new QRCode(qrcodeElement, {
+          text: window.location.href,
+          width: 250,
+          height: 250,
+          colorDark: "#000",
+          colorLight: "#ffffff",
+          correctLevel: QRCode.CorrectLevel.H,
+        });
+        qrcodeElement.dataset.anzhiyuQrcodeReady = "true";
+      } catch (error) {
+        console.warn("二维码加载失败", error);
+      } finally {
+        qrcodeElement.dataset.anzhiyuQrcodeLoading = "false";
+      }
+    };
+
+    const qrcodeTrigger = qrcodeElement.closest(".share-qrcode");
+    if (!qrcodeTrigger) {
+      createQRCode();
+      return;
     }
+    if (qrcodeTrigger.dataset.anzhiyuQrcodeBound === "true") return;
+
+    qrcodeTrigger.dataset.anzhiyuQrcodeBound = "true";
+    ["pointerenter", "focusin", "click"].forEach(eventName => {
+      qrcodeTrigger.addEventListener(eventName, createQRCode);
+    });
   },
 
   // 判断是否在el内
@@ -1221,6 +1336,7 @@ const anzhiyu = {
       consoleEl.classList.remove("show");
     } else {
       consoleEl.classList.add("show");
+      document.dispatchEvent(new CustomEvent("anzhiyu:console-open"));
     }
     const consoleKeyboard = document.querySelector("#consoleKeyboard");
 
