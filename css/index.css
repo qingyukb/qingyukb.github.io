@@ -4392,6 +4392,7 @@ div#swiper_container:hover {
 }
 
 .topGroup .banner-button-group {
+  z-index: 2;
   position: absolute;
   right: 2rem;
   bottom: 2rem;
@@ -4430,6 +4431,7 @@ div#swiper_container:hover {
   font-size: 22px;
 }
 .topGroup .todayCard::after {
+  pointer-events: none;
   position: absolute;
   content: "";
   width: 100%;
