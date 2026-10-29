@@ -4360,6 +4360,12 @@ div#swiper_container:hover {
   pointer-events: all;
 }
 
+.topGroup .todayCard .todayCard-main-link {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
 .topGroup .todayCard .todayCard-info {
   position: absolute;
   bottom: 2rem;
@@ -4368,6 +4374,7 @@ div#swiper_container:hover {
   color: var(--anzhiyu-white);
   max-width: 60%;
   transition: 0.3s;
+  pointer-events: none;
 }
 
 .topGroup .todayCard .todayCard-info .todayCard-tips {
@@ -4392,7 +4399,7 @@ div#swiper_container:hover {
 }
 
 .topGroup .banner-button-group {
-  z-index: 2;
+  z-index: 3;
   position: absolute;
   right: 2rem;
   bottom: 2rem;
@@ -4419,6 +4426,7 @@ div#swiper_container:hover {
   height: 40px;
   width: 125px;
   justify-content: center;
+  text-decoration: none;
 }
 .topGroup .banner-button-group .banner-button .banner-button-text {
   white-space: nowrap;
